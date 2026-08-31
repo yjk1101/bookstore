@@ -21,74 +21,34 @@ async function fetchBooks(query) {
     return response.json();
 }
 
-// async function bookData() {
-//     try {
-//         // query와 section ID를 매핑
-//         const queries = [
-//             { query: "바이브 코딩", sectionId: "section2" },
-//             // { query: "정원", sectionId: "sale" }
-//         ];
-
-//         for (const { query, sectionId } of queries) {
-//             const data = await fetchBooks(query);
-
-//             // 해당 섹션 내의 .box 요소 8개 선택
-//             const section = document.querySelector(`#${sectionId}`);
-//             const boxElements = section.querySelectorAll(".swiper-slide");
-
-//             boxElements.forEach((box, i) => {
-//                 const doc = data.documents[i];
-//                 if (!doc) return;
-
-//                 // 요소 생성 및 추가
-//                 box.innerHTML = `<img src="${doc.thumbnail}">
-//                         <h3>${doc.title}</h3>
-//                         <h6>${doc.authors}</h6>
-//                         <p>${doc.contents.substring(0, 60)}</p>
-//                         <button>click</button>
-//                         `
-//             });
-//         }
-//     } catch (error) {
-//         console.error('에러 발생:', error);
-//     }
-// }
-
 async function bookData() {
     try {
+        // query와 section ID를 매핑
         const queries = [
-            { query: "바이브 코딩", sectionId: "section1" },
-            { query: "베스트", sectionId: "section2" }
+            { query: "최신", sectionId: "section1" },
+            { query: "베스트", sectionId: "section2" },
+            { query: "바이브 코딩", sectionId: "section3" },
+            { query: "자기", sectionId: "section4" },
+            { query: "오디세이", sectionId: "section5" }
         ];
 
         for (const { query, sectionId } of queries) {
-
             const data = await fetchBooks(query);
             const section = document.querySelector(`#${sectionId}`);
-            const wrapper = section.querySelector(".swiper-wrapper");
+            const boxElements = section.querySelectorAll(".swiper-slide");
 
+            //썸네일이 빈 문자열인것은 제외
+            const origin = data.documents;
+            let originFilter = origin.filter((val)=>{
+                return val.thumbnail != '' && val.contents !='';
+            })
+            
+            if (sectionId === "section2") {
+                boxElements.forEach((box, i) => {
+                    for (let j = 0; j < 9; j++) {
 
-            // ========================================
-            // section1
-            // 3개의 swiper-slide
-            // 각 slide 안에 9개의 책
-            // ========================================
-
-            if (sectionId === "section1") {
-
-                wrapper.innerHTML = "";
-
-                // swiper-slide 3개 생성
-                for (let slideIndex = 0; slideIndex < 3; slideIndex++) {
-
-                    const slide = document.createElement("div");
-                    slide.classList.add("swiper-slide");
-
-                    // slide 안에 책 9개 생성
-                    for (let i = 0; i < 9; i++) {
-
-                        const bookIndex = slideIndex * 9 + i;
-                        const doc = data.documents[bookIndex];
+                        const bookIndex = i * 9 + j;
+                        const doc = originFilter[bookIndex];
 
                         if (!doc) break;
 
@@ -96,51 +56,72 @@ async function bookData() {
                         book.classList.add("slide_content2");
 
                         book.innerHTML = `
-                            <img src="${doc.thumbnail}" alt="${doc.title}">
-                            <h3>${doc.title}</h3>
-                            <h6>${doc.authors}</h6>
-                            <p>${doc.contents.substring(0, 60)}</p>
-                            <button>click</button>
+                            <img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
+                            <span class="num">${bookIndex + 1}</span>
+                            <div class="book_info">
+                                <h3 class="book_tit">${doc.title}</h3>
+                                <h6 class="book_author">${doc.authors}</h6>
+                            </div>
                         `;
 
-                        slide.appendChild(book);
+                        box.appendChild(book);
                     }
+                });
+            }
+            
+            else if (sectionId === "section3") {
+                boxElements.forEach((box, i) => {
+                    const doc = originFilter[i];
+                    if (!doc) return;
 
-                    wrapper.appendChild(slide);
-                }
+                    // 요소 생성 및 추가
+                    box.innerHTML = `<img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
+                        <p class="book_tit">${doc.contents.substring(0, 60)}</p>
+                    `;
+                });
             }
 
+            else if (sectionId === "section4") {
+                const backgroundColors = ["#0E6434", "#745C14", "#7B043C", "#273563", "#158843", "#dd6f08"];
 
-            // ========================================
-            // section2
-            // 8개의 swiper-slide
-            // 각 slide에 책 1개
-            // ========================================
+                boxElements.forEach((box, i) => {
+                    for (let j = 0; j < 3; j++) {
 
-            else if (sectionId === "section2") {
+                        const bookIndex = i * 3 + j;
+                        const doc = originFilter[bookIndex];
 
-                wrapper.innerHTML = "";
+                        if (!doc) break;
 
-                // swiper-slide 8개 생성
-                for (let i = 0; i < 9; i++) {
+                        const bgColor = backgroundColors[bookIndex % backgroundColors.length];
 
-                    const doc = data.documents[i];
+                        const book = document.createElement("div");
+                        book.classList.add("slide_content");
 
-                    if (!doc) break;
+                        book.innerHTML = `
+                            <div class="book_img_box">
+                                <div class="book_img_bg" style="background-color: ${bgColor};"></div>
+                                <img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
+                            </div>
+                            <h3 class="book_tit">${doc.contents.substring(0, 100)}</h3>
+                            <p class="book_author">${doc.title}</p>
+                        `;
 
-                    const slide = document.createElement("div");
-                    slide.classList.add("swiper-slide");
+                        box.appendChild(book);
+                    }
+                });
+            }
 
-                    slide.innerHTML = `
-                        <img src="${doc.thumbnail}" alt="${doc.title}">
-                        <h3>${doc.title}</h3>
-                        <h6>${doc.authors}</h6>
-                        <p>${doc.contents.substring(0, 60)}</p>
-                        <button>click</button>
+            else {
+                boxElements.forEach((box, i) => {
+                    const doc = originFilter[i];
+                    if (!doc) return;
+
+                    // 요소 생성 및 추가
+                    box.innerHTML = `<img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
+                        <h3 class="book_tit">${doc.title}</h3>
+                        <h6 class="book_author">${doc.authors}</h6>
                     `;
-
-                    wrapper.appendChild(slide);
-                }
+                });
             }
         }
     } catch (error) {

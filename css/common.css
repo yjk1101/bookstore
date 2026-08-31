@@ -4,7 +4,7 @@
     --main-color-gray: #787878;
     --main-color-lightgray: #f5f5f5;
     --main-color-skyblue: #1E9EFF;
-    --font-small: 13px;
+    --font-small: 14px;
     --font-basic: 16px;
     --font-large: 20px;
     --padding-small:16px;
@@ -42,7 +42,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #555;
 }
 
 .swiper-slide img {
@@ -64,6 +63,7 @@ body {
     height: 44px;
     border: 1px solid var(--main-color-gray);
     border-radius: 50%;
+    background: #fff;
 }
 .swiper-button-prev {
     left: 0 !important;
