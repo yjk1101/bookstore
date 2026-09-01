@@ -22,11 +22,11 @@
 		<header>
 			<div class="container">
 				<div class="header1">
-					<div class="logo">
+					<h1 class="logo">
 						<a href="" target="_blank">
 							<img src="./img/logo.png" alt="리디북스">
 						</a>
-					</div>
+					</h1>
 					<form action="">
 						<div class="search_box">
 							<label for="srh1"><i class="fa-solid fa-magnifying-glass"></i></label>
@@ -48,8 +48,16 @@
 							<li><a href="">웹툰</a></li>
 							<li><a href="">웹소설</a></li>
 							<li class="active"><a href="">도서</a></li>
-							<li><a href="">리디샵</a></li>
-							<li><a href="">셀렉트</a></li>
+							<li class="new"><a href="">리디샵</a></li>
+							<li>
+								<a href="">
+									셀렉트<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+										<path fill="currentColor"
+											d="M5.508 4.561a.94.94 0 0 0-.943.943v7.36c0 .522.422.944.943.944h7.36a.94.94 0 0 0 .943-.943v-1.457a.6.6 0 1 1 1.2 0v1.457c0 1.184-.959 2.143-2.143 2.143h-7.36a2.14 2.14 0 0 1-2.143-2.143v-7.36c0-1.185.959-2.144 2.143-2.144h1.457a.6.6 0 0 1 0 1.2zm4.253-.6a.6.6 0 0 1 .6-.6h4.05a.6.6 0 0 1 .6.6v4.05a.6.6 0 1 1-1.2 0V5.415l-4.649 4.648a.6.6 0 0 1-.848-.848l4.654-4.654H10.36a.6.6 0 0 1-.6-.6">
+										</path>
+									</svg>
+								</a>
+							</li>
 						</ul>
 					</nav>
 					<div class="wholemenu_box">
@@ -86,7 +94,7 @@
 				<div class="sec_con">
 					<div class="swiper mySwiper">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
+							<!-- <div class="swiper-slide">
 								<div class="slide_content">
 									<a href="">
 										<img src="./img/slide1.jpg" alt="">
@@ -143,7 +151,7 @@
 										</div>
 									</a>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="swiper-button-next"></div>
@@ -208,7 +216,7 @@
 
 		<div id="section1" class="section">
 			<div class="container">
-				<h3 class="main_title">새로 나온 작품</h3>
+				<h2 class="main_title">새로 나온 작품</h2>
 				<div class="sec_con">
 					<div class="swiper s1mySwiper">
 						<div class="swiper-wrapper">
@@ -231,20 +239,10 @@
 
 		<div id="section2" class="section">
 			<div class="container">
-				<h3 class="main_title">지금 많이 읽고 있는 작품</h3>
+				<h2 class="main_title">지금 많이 읽고 있는 작품</h2>
 				<div class="sec_con">
 					<div class="swiper s2mySwiper">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<!-- <div class="slide_content2">
-									<img src="" alt="" class="book_img">
-									<span class="num">1</span>
-									<div class="book_info">
-										<h3 class="book_tit">${doc.title}</h3>
-                        				<h6 class="book_author">${doc.authors}</h6>
-									</div>
-								</div> -->
-							</div>
 							<div class="swiper-slide"></div>
 							<div class="swiper-slide"></div>
 						</div>
@@ -257,7 +255,7 @@
 
 		<div id="section3" class="section">
 			<div class="container">
-				<h3 class="main_title">오늘, 리디의 발견</h3>
+				<h2 class="main_title">오늘, 리디의 발견</h2>
 				<div class="sec_con">
 					<div class="swiper s3mySwiper">
 						<div class="swiper-wrapper">
@@ -280,11 +278,10 @@
 
 		<div id="section4" class="section">
 			<div class="container">
-				<h3 class="main_title">지금, 리디에서만! 선 출간 신작</h3>
+				<h2 class="main_title">지금, 리디에서만! 선 출간 신작</h2>
 				<div class="sec_con">
 					<div class="swiper s4mySwiper">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide"></div>
 							<div class="swiper-slide"></div>
 							<div class="swiper-slide"></div>
 						</div>
@@ -297,7 +294,7 @@
 
 		<div id="section5" class="section">
 			<div class="container">
-				<h3 class="main_title">오디세이랑 함께 보면 좋아요!</h3>
+				<h2 class="main_title">오디세이랑 함께 보면 좋아요!</h2>
 				<div class="sec_con">
 					<div class="swiper s5mySwiper">
 						<div class="swiper-wrapper">
@@ -352,7 +349,7 @@
 									</p>
 									<ul>
 										<li><a href="">회사 소개</a></li>
-										<li><a href="">인재채용</a></li>
+										<li class="new"><a href="">인재채용</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -390,7 +387,6 @@
 				<div class="footer2">
 					<button class="owner_info">
 						리디(주) 사업자 정보
-						<i class="fa-solid fa-chevron-down"></i>
 					</button>
 					<div class="footer2_menu">
 						<ul>
@@ -406,10 +402,11 @@
 		</footer>
 	</div>
 
-	<!-- Swiper JS -->
+	
 	<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js"></script>
-	<script src="./js/swiper.js"></script>
+	<script src="./js/slider.js"></script>
 	<script src="./js/book.js"></script>
+	<script src="./js/swiper.js"></script>
 </body>
 
 </html>

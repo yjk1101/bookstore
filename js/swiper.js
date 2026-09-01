@@ -4,6 +4,10 @@ var slider_swiper = new Swiper('.mySwiper', {
         nextEl: '#slider .swiper-button-next',
         prevEl: '#slider .swiper-button-prev',
     },
+    autoplay: {
+        delay: 3000,
+    },
+    loop: true,
 });
 
 //section1

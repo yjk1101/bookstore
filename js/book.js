@@ -3,7 +3,7 @@ async function fetchBooks(query) {
     const params = new URLSearchParams({
         target: "title",
         query,
-        size: 50
+        size: 30
     });
     const url = `https://dapi.kakao.com/v3/search/book?${params}`;
 
@@ -56,11 +56,12 @@ async function bookData() {
                         book.classList.add("slide_content2");
 
                         book.innerHTML = `
-                            <img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
+                            <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
                             <span class="num">${bookIndex + 1}</span>
                             <div class="book_info">
-                                <h3 class="book_tit">${doc.title}</h3>
-                                <h6 class="book_author">${doc.authors}</h6>
+                                <a href="" class="book_tit"><p>${doc.title}</p></a>
+                                <p class="book_author">${doc.authors}</p>
+                                <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.3</span> (1234)</p>
                             </div>
                         `;
 
@@ -75,8 +76,9 @@ async function bookData() {
                     if (!doc) return;
 
                     // 요소 생성 및 추가
-                    box.innerHTML = `<img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
-                        <p class="book_tit">${doc.contents.substring(0, 60)}</p>
+                    box.innerHTML = `
+                        <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                        <a href="" class="book_tit"><p>${doc.contents.substring(0, 60)}</p></a>
                     `;
                 });
             }
@@ -98,12 +100,14 @@ async function bookData() {
                         book.classList.add("slide_content");
 
                         book.innerHTML = `
-                            <div class="book_img_box">
-                                <div class="book_img_bg" style="background-color: ${bgColor};"></div>
-                                <img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
-                            </div>
-                            <h3 class="book_tit">${doc.contents.substring(0, 100)}</h3>
-                            <p class="book_author">${doc.title}</p>
+                            <a href="">
+                                <div class="book_img_box">
+                                    <div class="book_img_bg" style="background-color: ${bgColor};"></div>
+                                    <img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
+                                </div>
+                                <p class="book_tit">${doc.contents.substring(0, 60)}</p>
+                                <p class="book_author">${doc.title}</p>
+                            </a>
                         `;
 
                         box.appendChild(book);
@@ -117,9 +121,11 @@ async function bookData() {
                     if (!doc) return;
 
                     // 요소 생성 및 추가
-                    box.innerHTML = `<img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
-                        <h3 class="book_tit">${doc.title}</h3>
-                        <h6 class="book_author">${doc.authors}</h6>
+                    box.innerHTML = `
+                        <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                        <a href="" class="book_tit"><p>${doc.title}</p></a>
+                        <p class="book_author">${doc.authors}</p>
+                        <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.2</span> (567)</p>
                     `;
                 });
             }
