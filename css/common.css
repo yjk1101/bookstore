@@ -1,15 +1,25 @@
 @charset "UTF-8";
 
 :root {
-    --main-color-gray: #787878;
-    --main-color-lightgray: #f5f5f5;
-    --main-color-skyblue: #1E9EFF;
-    --main-color-red: #DC3232;
-    --font-small: 14px;
-    --font-basic: 16px;
-    --font-large: 20px;
-    --padding-small: 16px;
-    --padding-basic: 40px;
+    --color-primary: #1E9EFF;
+    --color-red: #DC3232;
+    
+    --color-text-main: #222;
+    --color-text-sub: #787878;
+    --color-text-light: #a5a5a5;
+
+    --color-gray-light: #f5f5f5;
+    
+    --font-sm: 14px;
+    --font-base: 16px;
+    --font-lg: 20px;
+
+    --padding-sm: 16px;
+    --padding-md: 40px;
+
+    --gap-sm: 4px;
+    --gap-base: 10px;
+    --gap-lg:20px;
 }
 
 
@@ -57,11 +67,11 @@ body {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     font-size: 16px;
-    color: var(--main-color-gray);
+    color: var(--color-text-sub);
     background: transparent;
     width: 44px;
     height: 44px;
-    border: 1px solid var(--main-color-gray);
+    border: 1px solid var(--color-text-sub);
     border-radius: 50%;
     background: #fff;
 }
@@ -96,7 +106,7 @@ body {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    color: #222;
+    color: var(--color-text-main);
 }
 
 .swiper-button-prev.swiper-button-disabled,
@@ -108,8 +118,8 @@ body {
 /* 공통 */
 body {
     font-family: 'Pretendard';
-    font-size: var(--font-basic);
-    color: #222;
+    font-size: var(--font-base);
+    color: var(--color-text-main);
 }
 
 .container {
@@ -117,26 +127,31 @@ body {
     height: 100%;
     margin: 0 auto;
     padding: 0 30px;
+    
+    position: relative;
+}
+
+.bold {
+    font-weight: 600;
 }
 
 
 /* header */
 header {
-    border-bottom: 1px solid var(--main-color-lightgray);
+    border-bottom: 1px solid var(--color-gray-light);
 }
 
 .header1 {
     display: grid;
     grid-template-columns: 1fr auto auto;
     align-items: center;
-    gap: 20px;
-    padding: var(--padding-small) 0;
+    gap: var(--gap-lg);
+    padding: var(--padding-sm) 0;
 }
 
 .header1 .logo {
     width: 65px;
     height: 30px;
-    background: red;
 }
 
 .header1 .search_box {
@@ -152,14 +167,14 @@ header {
 
 .header1 .search_box label i {
     font-size: 16px;
-    color: #bdbdbd;
+    color: var(--color-text-light);
     padding: 13px 5px;
 }
 
 .header1 .search_box input {
     width: 260px;
     height: 40px;
-    background-color: var(--main-color-lightgray);
+    background-color: var(--color-gray-light);
     border: none;
     outline: none;
     border-radius: 8px;
@@ -176,32 +191,32 @@ header {
 .header1 .mymenu ul li:not(:last-child):after {
     content: '/';
     display: inline-block;
-    color: var(--main-color-gray);
+    color: var(--color-text-sub);
     margin:0 2px;
 }
 
 .header1 .mymenu ul li a {
     font-weight: 600;
-    color: var(--main-color-gray);
-    font-size: var(--font-small);
+    color: var(--color-text-sub);
+    font-size: var(--font-sm);
 }
 
 .header2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: var(--padding-small);
+    padding-bottom: var(--padding-sm);
 }
 
 .header2 nav ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: var(--gap-lg);
 }
 
 .header2 nav ul li.active a {
-    color: var(--main-color-skyblue);
+    color: var(--color-primary);
 }
 
 .header2 nav ul li:not(.active):hover a {
@@ -212,6 +227,7 @@ header {
 .header2 nav ul li.new a {
     position: relative;
 }
+
 .header2 nav ul li.new a::after {
     content: 'N';
     display: block;
@@ -219,9 +235,10 @@ header {
     top: -3px;
     right:-8px;
     font-size: 9px;
-    color: var(--main-color-red);
+    color: var(--color-red);
     font-weight: 600;
 }
+
 .header2 nav ul li a svg {
     vertical-align: middle;
 }
@@ -234,7 +251,7 @@ header {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: var(--gap-lg);
 }
 
 .header2 .wholemenu_box a {
@@ -252,7 +269,7 @@ header {
 
 /* footer */
 footer {
-    border: 1px solid var(--main-color-lightgray);
+    border: 1px solid var(--color-gray-light);
     margin-top:32px;
 }
 
@@ -260,9 +277,9 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 20px;
-    padding: var(--padding-basic) 0 var(--padding-small);
-    color: var(--main-color-gray);
+    gap: var(--gap-lg);
+    padding: var(--padding-md) 0 var(--padding-sm);
+    color: var(--color-text-sub);
 }
 
 .footer1 .footer_menu_box {
@@ -277,15 +294,15 @@ footer {
 }
 
 .footer1 .customer_menu a {
-    font-size: var(--font-small);
+    font-size: var(--font-sm);
     font-weight: 600;
     margin-bottom: 16px;
     display: block;
-    color: var(--main-color-gray);
+    color: var(--color-text-sub);
 }
 
 .footer1 .customer_menu a i {
-    font-size: var(--font-basic);
+    font-size: var(--font-base);
     margin-right: 5px;
 }
 
@@ -296,7 +313,7 @@ footer {
 .footer1 .footer1_menu>ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    font-size: var(--font-small);
+    font-size: var(--font-sm);
 }
 
 .footer1 .footer1_menu>ul p {
@@ -309,13 +326,13 @@ footer {
 }
 
 .footer1 .footer1_menu>ul>li ul li a {
-    color: var(--main-color-gray);
+    color: var(--color-text-sub);
 }
 
 .footer1 .footer1_menu>ul>li ul li.new a::after {
     content:'N';
     display: inline-block;
-    background:var(--main-color-skyblue);
+    background:var(--color-primary);
     color:#fff;
     font-size: 8px;
     border-radius: 50%;
@@ -329,7 +346,7 @@ footer {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: var(--gap-base);
 }
 
 .footer1 .sns_menu ul li a {
@@ -340,16 +357,16 @@ footer {
     height: 44px;
     border-radius: 50%;
     border: 1px solid #e6e6e6;
-    color: var(--main-color-gray);
+    color: var(--color-text-sub);
 }
 
 .footer2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-    color: var(--main-color-gray);
-    padding: var(--padding-small) 0 var(--padding-basic);
+    gap: var(--gap-base);
+    color: var(--color-text-sub);
+    padding: var(--padding-sm) 0 var(--padding-md);
 }
 
 .footer2 .owner_info {
@@ -358,20 +375,42 @@ footer {
     background: none;
     display: inline-block;
     font-size: 12px;
-    color: var(--main-color-gray);
+    color: var(--color-text-sub);
     font-weight: 600;
+}
+
+.footer2 .owner_info i {
+    font-size: 10px;
+    vertical-align: 1px;
+}
+
+.footer2 .footer2_menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap-base);
 }
 
 .footer2 .footer2_menu ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 16px;
     font-size: 11px;
 }
 
-.footer2 .footer2_menu ul li:nth-of-type(2) {
-    font-weight: 600;
+.footer2 .footer2_menu ul li:not(:last-child):after {
+    content: '|';
+    display: inline-block;
+    color: var(--color-gray-light);
+    margin:0 8px;
+    font-weight: 400;
+}
+
+#footer_toggle {
+    display: none;
+}
+
+#footer_toggle.show {
+    display: flex;
 }
 
 .footer2 .copyright {

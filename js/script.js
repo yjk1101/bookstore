@@ -1,4 +1,14 @@
-// 슬라이드에 들어갈 데이터 (필요에 따라 그룹화 또는 개별 관리 가능)
+// footer show/hide
+const ownerInfo = document.querySelector('.owner_info');
+const footerToggle = document.getElementById('footer_toggle');
+
+if (ownerInfo && footerToggle) {
+    ownerInfo.addEventListener('click', function (e) {
+        footerToggle.classList.toggle('show');
+    });
+}
+
+// slider
 const slideData = [
     // 첫 번째 swiper-slide 그룹
     [
@@ -39,7 +49,8 @@ const slideData = [
 ];
 
 function renderSlides() {
-    const wrapper = document.querySelector('.swiper-wrapper');
+    const slider = document.getElementById("slider");
+    const wrapper = slider.querySelector('.swiper-wrapper');
     let html = '';
 
     slideData.forEach(group => {
@@ -51,7 +62,7 @@ function renderSlides() {
                     <a href="">
                         <img src="${item.img}" alt="">
                         <div class="slide_info">
-                            <p class="main_title">${item.title}</p>
+                            <p class="slide_tit">${item.title}</p>
                             <p class="book_tit">${item.desc}</p>
                         </div>
                     </a>

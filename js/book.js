@@ -29,7 +29,8 @@ async function bookData() {
             { query: "베스트", sectionId: "section2" },
             { query: "바이브 코딩", sectionId: "section3" },
             { query: "자기", sectionId: "section4" },
-            { query: "오디세이", sectionId: "section5" }
+            { query: "오디세이", sectionId: "section5" },
+            { query: "지금", sectionId: "section7" }
         ];
 
         for (const { query, sectionId } of queries) {
@@ -40,7 +41,7 @@ async function bookData() {
             //썸네일이 빈 문자열인것은 제외
             const origin = data.documents;
             let originFilter = origin.filter((val)=>{
-                return val.thumbnail != '' && val.contents !='';
+                return val.thumbnail != '' && val.contents !='' && val.title !='' && val.authors !='';
             })
             
             if (sectionId === "section2") {
@@ -71,7 +72,9 @@ async function bookData() {
             }
             
             else if (sectionId === "section3") {
-                boxElements.forEach((box, i) => {
+                const bookElements = section.querySelectorAll(".book_item");
+                
+                bookElements.forEach((box, i) => {
                     const doc = originFilter[i];
                     if (!doc) return;
 
@@ -100,14 +103,12 @@ async function bookData() {
                         book.classList.add("slide_content");
 
                         book.innerHTML = `
-                            <a href="">
-                                <div class="book_img_box">
-                                    <div class="book_img_bg" style="background-color: ${bgColor};"></div>
-                                    <img src="${doc.thumbnail}" alt="${doc.title}" class="book_img">
-                                </div>
-                                <p class="book_tit">${doc.contents.substring(0, 60)}</p>
-                                <p class="book_author">${doc.title}</p>
-                            </a>
+                            <div class="book_img_box">
+                                <div class="book_img_bg" style="background-color: ${bgColor};"></div>
+                                <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                            </div>
+                            <a href="" class="book_tit"><p>${doc.contents.substring(0, 60)}</p></a>
+                            <a href="" class="book_author"><p>${doc.title}</p></a>
                         `;
 
                         box.appendChild(book);
