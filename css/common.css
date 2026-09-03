@@ -8,11 +8,13 @@
     --color-text-sub: #787878;
     --color-text-light: #a5a5a5;
 
+    --color-gray:#e6e6e6;
     --color-gray-light: #f5f5f5;
     
     --font-sm: 14px;
     --font-base: 16px;
     --font-lg: 20px;
+    --font-xl: 32px;
 
     --padding-sm: 16px;
     --padding-md: 40px;
@@ -120,6 +122,7 @@ body {
     font-family: 'Pretendard';
     font-size: var(--font-base);
     color: var(--color-text-main);
+    background-color: #fff;
 }
 
 .container {
@@ -400,7 +403,7 @@ footer {
 .footer2 .footer2_menu ul li:not(:last-child):after {
     content: '|';
     display: inline-block;
-    color: var(--color-gray-light);
+    color: var(--color-gray);
     margin:0 8px;
     font-weight: 400;
 }
