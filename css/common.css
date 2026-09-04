@@ -134,8 +134,98 @@ body {
     position: relative;
 }
 
+.section {
+    padding: var(--padding-md) 0;
+}
+
+.sec_con {
+    position: relative;
+}
+
+.more_btn {
+    display: block;
+    position: absolute;
+    top:4px;
+    right:30px;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
 .bold {
     font-weight: 600;
+}
+
+.exbold {
+    font-weight: 700;
+}
+
+.main_title {
+    font-size: var(--font-lg);
+    margin-bottom: var(--padding-sm);
+    font-weight: 700;
+}
+
+/* 책 */
+.book_img {
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    display: block;
+    overflow: hidden;
+}
+
+.book_tit {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+}
+
+.book_author {
+    font-size: var(--font-sm);
+    font-weight: 400;
+    color: var(--color-text-sub);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+}
+
+.book_img+.book_tit {
+    margin-top: 10px;
+}
+
+.book_tit+.book_author {
+    margin-top: 5px;
+}
+
+.book_img_box+.book_tit {
+    margin-top: 10px;
+}
+
+.book_score {
+    font-size: 13px;
+    color: var(--color-text-sub);
+}
+
+.book_score .book_star {
+    font-weight: 500;
+    color: var(--color-red);
+}
+
+.book_score .book_star i {
+    font-size: 9px;
+    vertical-align: 1px;
+}
+
+.book_score {
+    margin-top: 10px;
 }
 
 

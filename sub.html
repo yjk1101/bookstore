@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" href="./css/font.css">
 	<link rel="stylesheet" href="./css/common.css">
-	<link rel="stylesheet" href="./css/main.css">
+	<!-- <link rel="stylesheet" href="./css/main.css"> -->
 	<link rel="stylesheet" href="./css/sub.css">
 </head>
 
@@ -97,21 +97,21 @@
 								</div>
 								<h2 class="sub_book_tit"></h2>
 								<div class="sub_book_detail">
-									<!-- <ul class="sub_txt_list">
-										<li>
-											<span class="book_star"><i class="fa-solid fa-star"></i> 5</span> (3)
+									<ul class="sub_txt_list">
+										<li class="exbold">
+											<span class="book_star"><i class="fa-solid fa-star"></i> 5점</span> (3)
 										</li>
 										<li>관심 9</li>
-									</ul> -->
-										<!-- <ul class="sub_txt_list">
-											<li><span class="sub_book_author bold">김애란</span> 저자</li>
-										</ul>
-										<ul class="sub_txt_list">
-											<li><span class="sub_book_publisher bold">문학동네</span> 출판</li>
-										</ul> -->
+									</ul>
+									<ul class="sub_txt_list">
+										<li><span class="sub_book_author bold"></span> 저자</li>
+									</ul>
+									<ul class="sub_txt_list">
+										<li><span class="sub_book_publisher bold"></span> 출판</li>
+									</ul>
 								</div>
 								<button type="button" class="btnS2"><i class="fa-solid fa-plus"></i>관심</button>
-								
+
 								<div class="sub_book_event">
 									<dl>
 										<dt><span class="tag">이벤트</span></dt>
@@ -130,19 +130,20 @@
 								<div class="sub_book_price">
 									<div class="price_left">소장</div>
 									<div class="price_right">
-										<!-- <dl>
+										<dl>
 											<dt>종이책 정가</dt>
-											<dd>16,800원</dd>
+											<dd class="ori_price"></dd>
 										</dl>
 										<dl>
 											<dt>판매가</dt>
-											<dd>10,710원</dd>
-										</dl> -->
+											<dd class="sale_price"></dd>
+										</dl>
 									</div>
 								</div>
 								<div class="btns justify_end">
 									<button type="button" class="btnS1"><i class="fa-regular fa-heart"></i></button>
-									<button type="button" class="btnS1"><i class="fa-solid fa-cart-shopping"></i></button>
+									<button type="button" class="btnS1"><i
+											class="fa-solid fa-cart-shopping"></i></button>
 									<button type="button" class="btnS1"><i class="fa-solid fa-gift"></i></button>
 									<button type="button" class="btnS1 wide blue">소장</button>
 								</div>
@@ -151,34 +152,113 @@
 						<div class="content_box">
 							<div style="background: red; height: 200px; width: 100%;"></div>
 						</div>
-						<div id="sub_book_info" class="content_box" style="background: purple;">
+						<div id="book_info_box" class="content_box">
+							<p class="sub_book_name"></p>
+							<h3 class="main_title">작품 정보</h3>
 							<div class="tab_section">
 								<ul class="tab_menu">
-									<li class="active">tab1</li>
-									<li>tab2</li>
+									<li class="active">작품 소개</li>
+									<li>목차</li>
 								</ul>
-						
 								<div class="tabcontent">
-									내용1
-									<button>더보기</button>
+									<div id="book_intro" class="txt_file"></div>
+									<div class="see_more_btn">
+										<button><span>더보기</span> <i class="fa-solid fa-chevron-down"></i></button>
+									</div>
 								</div>
 								<div class="tabcontent">
-									내용2
-									<button>더보기</button>
+									<div id="book_table" class="txt_file"></div>
+									<div class="see_more_btn">
+										<button><span>더보기</span> <i class="fa-solid fa-chevron-down"></i></button>
+									</div>
 								</div>
 							</div>
-						
 						</div>
+						<div id="book_author_box" class="content_box">
+							<h3 class="main_title">작가</h3>
+							<div class="tab_section">
+								<ul class="tab_menu">
+									<li class="active">작가 프로필</li>
+									<li>작가 소개</li>
+								</ul>
+								<div class="tabcontent">
+									<p class="main_title"><span class="sub_author_name"></span> <button type="button" class="btnS2"><i class="fa-solid fa-plus"></i>작가 신간 알림&middot;소식</button></p>
+									
+									<div id="book_author_profile" class="txt_file">
+										<ul class="listS1">
+											<li>
+												<div>국적</div>
+												<div>대한민국</div>
+											</li>
+											<li>
+												<div>출생</div>
+												<div>1980년</div>
+											</li>
+											<li>
+												<div>학력</div>
+												<div>한국예술종합학교 연극원 극작과</div>
+											</li>
+											<li>
+												<div>데뷔</div>
+												<div>2002년 소설 '노크하지 않는 집'</div>
+											</li>
+											<li>
+												<div>수상</div>
+												<div>
+													2017년 제48회 동인문학상<br>
+													2016년 제8회 구상문학상 젊은작가상<br>
+													2013년 제37회 이상문학상 대상<br>
+													2013년 제18회 한무숙문학상<br>
+													2011년 제2회 젊은작가상<br>
+													2010년 제4회 김유정문학상<br>
+													2009년 제27회 신동엽창작상<br>
+													2008년 오늘의 젊은 예술가상<br>
+													2008년 제9회 이효석문학상 문학상<br>
+													2005년 제38회 한국일보 문학상<br>
+													2002년 제1회 대산대학문학상 소설부문
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div id="book_slide1" class="book_slide" >
+										<h2 class="main_title">작가의 대표 작품</h2>
+										<a href="" class="more_btn">더보기</a>
+										<div class="sec_con">
+											<div class="swiper bs1mySwiper">
+												<div class="swiper-wrapper">
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+													<div class="swiper-slide"></div>
+												</div>
+											</div>
+											<div class="swiper-button-next"></div>
+											<div class="swiper-button-prev"></div>
+										</div>
+									</div>
+								</div>
+								<div class="tabcontent">
+									<div id="book_author_intro" class="txt_file"></div>
+								</div>
+							</div>
 						</div>
+
+						<div id="book_star_box" class="content_box">
+							<h3 class="main_title">리뷰</h3>
+
+						</div>
+					</div>
 
 					<div class="sub_right">
-
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 
 		<footer>
 			<div class="container">
@@ -280,11 +360,10 @@
 		</footer>
 	</div>
 
-
 	<script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js"></script>
 	<script src="./js/script.js"></script>
 	<script src="./js/book_sub.js"></script>
-	<!-- <script src="./js/swiper.js"></script> -->
+	<script src="./js/swiper.js"></script>
 </body>
 
 </html>

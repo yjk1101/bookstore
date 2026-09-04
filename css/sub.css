@@ -90,6 +90,10 @@
     vertical-align: middle;
 }
 
+.sub_txt_list li .book_star {
+    color:var(--color-red);
+}
+
 .sub_book_event {
     width: 100%;
 }
@@ -167,6 +171,10 @@
     color: var(--color-text-sub);
 }
 
+.price_right dl dd.sale_price {
+    color: var(--color-primary);
+}
+
 /* 버튼 */
 .btns {
     display: flex;
@@ -188,7 +196,7 @@
     font-weight: 500;
     color: var(--text-sub);
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
@@ -214,16 +222,15 @@
     font-weight: 500;
     color: var(--color-primary);
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
 }
 
-
-/* sub_book_info */
+/* 텝 */
 .tab_section {
-    height: 350px;
+    height: 360px;
     margin: 0 auto;
     position: relative;
 }
@@ -236,16 +243,24 @@
 }
 
 .tab_menu li {
-    width: 200px;
-    line-height: 50px;
+    width: 50%;
+    line-height: 60px;
     border: 1px solid #aaa;
+    border-top:2px solid #222;
+    background-color: var(--color-gray-light);
     text-align: center;
-    border-bottom: 0;
+    border-right:none;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.tab_menu li:first-child {
+    border-left:none;
 }
 
 .tab_menu li.active {
-    background-color: #eee;
-    border-bottom: 1px solid #eee;
+    background-color: #fff;
+    border-bottom:1px solid transparent
 }
 
 .tabcontent {
@@ -253,17 +268,110 @@
     height: 300px;
     position: absolute;
     left: 0;
-    bottom: 0.5px;
-    background-color: #eee;
+    top: 60px;
+    background-color: #fff;
     border-top: 1px solid #aaa;
+    overflow: hidden;
+    display: none;
+    padding: 20px 0 80px;
 }
 
-.tabcontent button {
+.tabcontent:first-of-type {
+  display: block;
+}
+
+.tabcontent .see_more_btn {
+    width: 100%;
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
     z-index: 2;
-    width: 95%;
-    height: 40px;
 }
+.tabcontent .see_more_btn::before {
+    content:'';
+    display: block;
+    width: 100%;
+    height: 160px;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+}
+
+.tabcontent .see_more_btn.show::before {
+    display: none;
+}
+
+.tabcontent .see_more_btn button {
+    width: 100%;
+    height: 60px;
+    font-weight: 700;
+    background: #fff;
+    border: 1px solid var(--color-text-sub);
+    border-radius: 4px;
+    font-size: var(--font-base);
+}
+
+#book_author_box .tabcontent {
+    height: auto;
+    overflow: visible;
+    padding: 20px 0 0;
+}
+
+
+/* content_box */
+.sub_book_name {
+    font-size:18px;
+    font-weight: 500;
+    margin-bottom:10px;
+}
+
+.sub_author_name {
+    margin-right:10px;
+}
+
+.txt_file {
+    font-size: 15px;
+}
+.txt_file p:not(:last-of-type) {
+    margin-bottom:30px;
+}
+
+.listS1 li {
+    display: flex;
+    gap: var(--gap-base);
+    line-height: 1.7;
+}
+
+.listS1 li div:first-of-type {
+    font-weight: 600;
+    color: var(--color-text-sub);
+}
+
+/* 슬라이드 */
+.book_slide {
+    position: relative;
+}
+
+.book_slide .more_btn {
+   right:0; 
+}
+
+#book_slide1  {
+    margin-top:var(--padding-md);
+}
+
+#book_slide1 .swiper .swiper-slide{
+    display: block;
+    justify-content: space-between;
+}
+
+#book_slide1 .swiper-button-next,
+#book_slide1 .swiper-button-prev {
+    top: 100px;
+}
+
+#book_slide1 .main_title {
+    font-size: 18px;
+}
+
+
+

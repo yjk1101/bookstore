@@ -84,49 +84,91 @@ function renderSlides() {
 renderSlides();
 
 
+// 텝
+const tabSections = document.querySelectorAll('.tab_section');
 
-const tabMenu = document.querySelectorAll('.tab_menu li');
-const tabContent = document.querySelectorAll('.tabcontent');
-// 더보기
-const section = document.querySelector('.tab_section');
-const btns = document.querySelectorAll('.tabcontent button');
+tabSections.forEach(section => {
+  const tabMenu = section.querySelectorAll('.tab_menu li');
+  const tabContent = section.querySelectorAll('.tabcontent');
+  const btns = section.querySelectorAll('.tabcontent .see_more_btn button');
 
-// 탭메뉴 클릭
-tabMenu.forEach((tm, i) => {
-  tm.addEventListener('click', () => {
-    // 모든 탭 메뉴에서 'active' 클래스 제거
-    tabMenu.forEach(item => {
-      item.classList.remove('active');
-    });
-
-    // 클릭한 탭 메뉴에만 'active' 클래스 추가
-    tm.classList.add('active');
-
-    // 탭에 해당하는 리스트 보이고, 나머지는 숨기기
-    tabContent.forEach((tc, j) => {
-      tc.style.display = (i === j) ? 'flex' : 'none';
-      section.style.height = '350px';
-      tc.style.height = '300px';
-      btns[i].innerText = '더보기'
-    });
-  });
-});
-
-// 더보기 클릭
-btns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (btn.textContent == '더보기') {
-      section.style.height = '550px';
-      tabContent.forEach(tc => {
-        tc.style.height = '500px';
-      });
-      btn.innerText = '접기'
+  // 페이지 로드 시 첫 번째 탭 표시 및 높이 자동 설정
+  if (tabContent.length > 0) {
+    tabContent[0].style.display = 'block';
+    
+    // 버튼이 없을 때도 첫 로드 시 콘텐츠 높이에 맞춰 section 높이 조절
+    if (btns.length === 0) {
+      const initialHeight = tabContent[0].scrollHeight;
+      section.style.height = (initialHeight + 60) + 'px';
     } else {
-      section.style.height = '350px';
-      tabContent.forEach(tc => {
-        tc.style.height = '300px';
-      });
-      btn.innerText = '더보기'
+      section.style.height = '360px'; // 더보기 버튼이 있는 곳의 초기 높이
     }
+  }
+
+  // 1. 탭 메뉴 클릭 공통 처리
+  tabMenu.forEach((tm, i) => {
+    tm.addEventListener('click', () => {
+      tabMenu.forEach(item => item.classList.remove('active'));
+      tm.classList.add('active');
+
+      // 탭 콘텐츠 보이기/숨기기 및 높이 자동 조절
+      tabContent.forEach((tc, j) => {
+        if (i === j) {
+          tc.style.display = 'block';
+          
+          // ★ 더보기 버튼이 없는 섹션이라면, 탭을 바꿀 때마다 해당 콘텐츠 높이로 section 높이 설정
+          if (btns.length === 0) {
+            const contentHeight = tc.scrollHeight;
+            section.style.height = (contentHeight + 60) + 'px';
+          }
+        } else {
+          tc.style.display = 'none';
+        }
+      });
+
+      // '더보기' 버튼이 존재하는 섹션인 경우에만 기존처럼 높이 및 버튼 초기화 실행
+      if (btns.length > 0) {
+        section.style.height = '360px';
+        tabContent.forEach(tc => {
+          tc.style.height = '300px';
+        });
+        btns.forEach(btn => {
+          btn.innerHTML = '더보기 <i class="fa-solid fa-chevron-down"></i>';
+          if (btn.parentElement) {
+            btn.parentElement.classList.remove('show');
+          }
+        });
+      }
+    });
   });
+
+  // 2. '더보기' 버튼이 실제로 존재하는 섹션에만 클릭 이벤트 적용
+  if (btns.length > 0) {
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const currentTc = btn.closest('.tabcontent');
+
+        if (btn.textContent.includes('더보기')) {
+          if (currentTc) {
+            currentTc.style.height = 'auto'; 
+            const contentHeight = currentTc.scrollHeight;
+            section.style.height = (contentHeight + 60) + 'px';
+          }
+          btn.innerHTML = '접기 <i class="fa-solid fa-chevron-up"></i>';
+          if (btn.parentElement) {
+            btn.parentElement.classList.add('show');
+          }
+        } else {
+          section.style.height = '360px';
+          if (currentTc) {
+            currentTc.style.height = '300px';
+          }
+          btn.innerHTML = '더보기 <i class="fa-solid fa-chevron-down"></i>';
+          if (btn.parentElement) {
+            btn.parentElement.classList.remove('show');
+          }
+        }
+      });
+    });
+  }
 });
