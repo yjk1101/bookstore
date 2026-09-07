@@ -7,12 +7,12 @@
 }
 
 .sub_left {
-    width: 75%;
+    width: 80%;
     padding-right: 32px;
 }
 
 .sub_right {
-    width: 25%;
+    width: 20%;
     background: blue;
 }
 
@@ -33,10 +33,10 @@
 .sub_book_img {
     height: 306px;
     background: #444;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
-.sub_book_img > img {
+.sub_book_img>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -59,7 +59,7 @@
     display: flex;
     flex-direction: column;
     row-gap: var(--gap-base);
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .sub_txt_list {
@@ -91,7 +91,7 @@
 }
 
 .sub_txt_list li .book_star {
-    color:var(--color-red);
+    color: var(--color-red);
 }
 
 .sub_book_event {
@@ -145,9 +145,10 @@
     width: 100%;
     display: flex;
     align-items: stretch;
-    border-top:1px solid var(--color-gray);
-    border-bottom:1px solid var(--color-gray);
+    border-top: 1px solid var(--color-gray);
+    border-bottom: 1px solid var(--color-gray);
 }
+
 .price_left {
     width: 20%;
     display: flex;
@@ -157,16 +158,19 @@
     font-weight: 600;
     background-color: var(--color-gray-light);
 }
+
 .price_right {
-    flex:1;
+    flex: 1;
     padding: 10px 0;
 }
+
 .price_right dl {
     display: flex;
     justify-content: space-between;
     padding: 5px 10px;
     font-size: var(--font-sm);
 }
+
 .price_right dl dt {
     color: var(--color-text-sub);
 }
@@ -180,7 +184,7 @@
     display: flex;
     gap: var(--gap-base);
     width: 100%;
-    padding:10px;
+    padding: 10px;
 }
 
 .justify_end {
@@ -188,13 +192,14 @@
 }
 
 .btnS1 {
+    font-family: 'Pretendard';
     background: white;
     border: 1px solid var(--color-gray);
     padding: 16px 18px;
     border-radius: 4px;
     font-size: 18px;
     font-weight: 500;
-    color: var(--text-sub);
+    color: var(--color-text-sub);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -203,7 +208,7 @@
 }
 
 .btnS1.wide {
-    width:100%;
+    width: 100%;
     max-width: 227px;
 }
 
@@ -214,6 +219,7 @@
 }
 
 .btnS2 {
+    font-family: 'Pretendard';
     background: white;
     border: 1px solid var(--color-primary);
     padding: 6px 12px;
@@ -228,11 +234,35 @@
     gap: 4px;
 }
 
+.btnS3 {
+    font-family: 'Pretendard';
+    background: #fff;
+    border: 1px solid var(--color-gray-darker);
+    color: var(--color-text-sub);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: var(--font-sm);
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+btnS3.gray {
+    background: var(--color-gray-darker);
+    color: #fff;
+}
+
 /* 텝 */
 .tab_section {
-    height: 360px;
     margin: 0 auto;
     position: relative;
+}
+
+.tab_see_more {
+    height: 360px;
 }
 
 .tab_menu {
@@ -246,26 +276,25 @@
     width: 50%;
     line-height: 60px;
     border: 1px solid #aaa;
-    border-top:2px solid #222;
+    border-top: 2px solid #222;
     background-color: var(--color-gray-light);
     text-align: center;
-    border-right:none;
+    border-right: none;
     font-size: 18px;
     font-weight: 700;
 }
 
 .tab_menu li:first-child {
-    border-left:none;
+    border-left: none;
 }
 
 .tab_menu li.active {
     background-color: #fff;
-    border-bottom:1px solid transparent
+    border-bottom: 1px solid transparent
 }
 
 .tabcontent {
     width: 100%;
-    height: 300px;
     position: absolute;
     left: 0;
     top: 60px;
@@ -276,8 +305,12 @@
     padding: 20px 0 80px;
 }
 
+.tab_see_more .tabcontent {
+    height: 300px;
+}
+
 .tabcontent:first-of-type {
-  display: block;
+    display: block;
 }
 
 .tabcontent .see_more_btn {
@@ -288,12 +321,13 @@
     transform: translateX(-50%);
     z-index: 2;
 }
+
 .tabcontent .see_more_btn::before {
-    content:'';
+    content: '';
     display: block;
     width: 100%;
     height: 160px;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
 }
 
 .tabcontent .see_more_btn.show::before {
@@ -319,20 +353,21 @@
 
 /* content_box */
 .sub_book_name {
-    font-size:18px;
+    font-size: 18px;
     font-weight: 500;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
 
 .sub_author_name {
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 .txt_file {
     font-size: 15px;
 }
+
 .txt_file p:not(:last-of-type) {
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
 
 .listS1 li {
@@ -352,14 +387,14 @@
 }
 
 .book_slide .more_btn {
-   right:0; 
+    right: 0;
 }
 
-#book_slide1  {
-    margin-top:var(--padding-md);
+#book_slide1 {
+    margin-top: var(--padding-md);
 }
 
-#book_slide1 .swiper .swiper-slide{
+#book_slide1 .swiper .swiper-slide {
     display: block;
     justify-content: space-between;
 }
@@ -374,4 +409,199 @@
 }
 
 
+/* 리뷰 */
+.stars_result_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--color-gray);
+    padding-bottom: var(--padding-sm);
+}
 
+.stars_result_left {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--gap-base);
+}
+
+.stars_result {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.stars_box p {
+    margin-top: 10px;
+}
+
+.stars .star {
+    font-size: var(--font-sm);
+    color: var(--color-gray);
+}
+
+.stars .star.active {
+    color: var(--color-red);
+}
+
+.star_rating_box {
+    text-align: center;
+    color: var(--color-text-sub);
+    padding: var(--padding-md) 0;
+}
+
+.star_rating_box p {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.star_rating {
+    display: flex;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 48px;
+    justify-content: center;
+}
+
+.star_rating .star {
+    color: var(--color-gray);
+    transition: color 0.2s;
+}
+
+.star_rating .star.active,
+.star_rating .star.hover {
+    color: var(--color-red);
+}
+
+.review_writing_box {
+    padding: 20px;
+    border: 1px solid var(--color-gray);
+    margin-bottom: var(--padding-md);
+}
+
+.review_writing_box textarea {
+    width: 100%;
+    height: 90px;
+    border-radius: 5px;
+    font-family: 'Pretendard';
+    font-size: var(--font-base);
+    outline: none;
+    border: none;
+}
+
+.review_writing_btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 체크박스 */
+.chkS1 input[type="checkbox"] {
+    display: none;
+}
+
+.chkS1 label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 15px;
+    color: #333;
+    font-family: 'Pretendard';
+}
+
+.chkS1 label::before {
+    content: '\f00c';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-gray-darker);
+    border-radius: 50%;
+    margin-right: 8px;
+    background-color: #fff;
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+.chkS1 input[type="checkbox"]:checked+label::before {
+    content: '\f00c';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    font-size: 11px;
+}
+
+.review_list .review_item {
+    padding: var(--padding-sm) 0;
+}
+
+.review_list .review_item:not(:last-of-type) {
+    border-bottom: 1px solid var(--color-gray)
+}
+
+.review_head .star {
+    font-size: 12px;
+}
+
+.review_body {
+    padding: 10px 0 20px;
+}
+
+.review_foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review_foot_left {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap-base);
+}
+
+.review_writer .tag {
+    font-size: 10px;
+    font-weight: 400;
+    background: #fff;
+    border: 1px solid var(--color-gray-darker);
+    color: var(--color-text-sub);
+    margin-right: 10px;
+}
+
+.review_writer .writer_id {
+    font-size: var(--font-sm);
+    color: var(--color-text-sub);
+}
+
+.review_write_date {
+    font-size: var(--font-sm);
+    color: var(--color-text-sub);
+    display: flex;
+    gap: var(--gap-base);
+}
+
+.btn_list {
+    display: flex;
+}
+
+.btn_list li:not(:first-of-type)::before {
+    content:'';
+    display: inline-block;
+    margin: 0 5px;
+    width: 2px;
+    height: 2px;
+    background-color: var(--color-gray-darker);
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.btn_list li button {
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    font-size: var(--font-sm);
+    color: var(--color-text-sub);
+    font-family: 'Pretendard';
+}

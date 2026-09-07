@@ -84,10 +84,10 @@ function renderSlides() {
 renderSlides();
 
 
-// 텝
-const tabSections = document.querySelectorAll('.tab_section');
+// 텝 - 더보기
+const tabSeeMores = document.querySelectorAll('.tab_see_more');
 
-tabSections.forEach(section => {
+tabSeeMores.forEach(section => {
   const tabMenu = section.querySelectorAll('.tab_menu li');
   const tabContent = section.querySelectorAll('.tabcontent');
   const btns = section.querySelectorAll('.tabcontent .see_more_btn button');
@@ -95,14 +95,7 @@ tabSections.forEach(section => {
   // 페이지 로드 시 첫 번째 탭 표시 및 높이 자동 설정
   if (tabContent.length > 0) {
     tabContent[0].style.display = 'block';
-    
-    // 버튼이 없을 때도 첫 로드 시 콘텐츠 높이에 맞춰 section 높이 조절
-    if (btns.length === 0) {
-      const initialHeight = tabContent[0].scrollHeight;
-      section.style.height = (initialHeight + 60) + 'px';
-    } else {
-      section.style.height = '360px'; // 더보기 버튼이 있는 곳의 초기 높이
-    }
+    section.style.height = '360px';
   }
 
   // 1. 탭 메뉴 클릭 공통 처리
@@ -115,60 +108,127 @@ tabSections.forEach(section => {
       tabContent.forEach((tc, j) => {
         if (i === j) {
           tc.style.display = 'block';
-          
-          // ★ 더보기 버튼이 없는 섹션이라면, 탭을 바꿀 때마다 해당 콘텐츠 높이로 section 높이 설정
-          if (btns.length === 0) {
-            const contentHeight = tc.scrollHeight;
-            section.style.height = (contentHeight + 60) + 'px';
-          }
         } else {
           tc.style.display = 'none';
         }
       });
 
-      // '더보기' 버튼이 존재하는 섹션인 경우에만 기존처럼 높이 및 버튼 초기화 실행
-      if (btns.length > 0) {
-        section.style.height = '360px';
-        tabContent.forEach(tc => {
-          tc.style.height = '300px';
-        });
-        btns.forEach(btn => {
-          btn.innerHTML = '더보기 <i class="fa-solid fa-chevron-down"></i>';
-          if (btn.parentElement) {
-            btn.parentElement.classList.remove('show');
-          }
-        });
-      }
+      section.style.height = '360px';
+      tabContent.forEach(tc => {
+        tc.style.height = '300px';
+      });
+      btns.forEach(btn => {
+        btn.innerHTML = '더보기 <i class="fa-solid fa-chevron-down"></i>';
+        if (btn.parentElement) {
+          btn.parentElement.classList.remove('show');
+        }
+      });
     });
   });
 
   // 2. '더보기' 버튼이 실제로 존재하는 섹션에만 클릭 이벤트 적용
-  if (btns.length > 0) {
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const currentTc = btn.closest('.tabcontent');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentTc = btn.closest('.tabcontent');
 
-        if (btn.textContent.includes('더보기')) {
-          if (currentTc) {
-            currentTc.style.height = 'auto'; 
-            const contentHeight = currentTc.scrollHeight;
-            section.style.height = (contentHeight + 60) + 'px';
-          }
-          btn.innerHTML = '접기 <i class="fa-solid fa-chevron-up"></i>';
-          if (btn.parentElement) {
-            btn.parentElement.classList.add('show');
-          }
+      if (btn.textContent.includes('더보기')) {
+        if (currentTc) {
+          currentTc.style.height = 'auto'; 
+          const contentHeight = currentTc.scrollHeight;
+          section.style.height = (contentHeight + 60) + 'px';
+        }
+        btn.innerHTML = '접기 <i class="fa-solid fa-chevron-up"></i>';
+        if (btn.parentElement) {
+          btn.parentElement.classList.add('show');
+        }
+      } else {
+        section.style.height = '360px';
+        if (currentTc) {
+          currentTc.style.height = '300px';
+        }
+        btn.innerHTML = '더보기 <i class="fa-solid fa-chevron-down"></i>';
+        if (btn.parentElement) {
+          btn.parentElement.classList.remove('show');
+        }
+      }
+    });
+  });
+});
+
+// 텝 - 높이 auto
+const tabAutos = document.querySelectorAll('.tab_auto');
+
+tabAutos.forEach(section => {
+  const tabMenu = section.querySelectorAll('.tab_menu li');
+  const tabContent = section.querySelectorAll('.tabcontent');
+
+  if (tabContent.length > 0) {
+    // 초기 설정: 첫 번째 콘텐츠만 보이게 하고 나머지는 숨김
+    tabContent.forEach((tc, j) => {
+      tc.style.display = j === 0 ? 'block' : 'none';
+    });
+    
+    // 첫 번째 콘텐츠 높이 적용 (scrollHeight 사용)
+    const initialHeight = tabContent[0].scrollHeight;
+    section.style.height = (initialHeight + 60) + 'px';
+  }
+
+  tabMenu.forEach((tm, i) => {
+    tm.addEventListener('click', (e) => {
+      e.preventDefault(); // a 태그 등의 기본 동작 방지
+
+      // 메뉴 활성화 클래스 토글
+      tabMenu.forEach(item => item.classList.remove('active'));
+      tm.classList.add('active');
+
+      // 1. 콘텐츠 표시/숨김 처리를 먼저 실행 (그래야 높이 측정이 가능함)
+      tabContent.forEach((tc, j) => {
+        if (i === j) {
+          tc.style.display = 'block';
         } else {
-          section.style.height = '360px';
-          if (currentTc) {
-            currentTc.style.height = '300px';
-          }
-          btn.innerHTML = '더보기 <i class="fa-solid fa-chevron-down"></i>';
-          if (btn.parentElement) {
-            btn.parentElement.classList.remove('show');
-          }
+          tc.style.display = 'none';
         }
       });
+
+      // 2. display: block으로 바뀐 후 높이 측정 및 적용
+      const contentHeight = tabContent[i].scrollHeight;
+      section.style.height = (contentHeight + 60) + 'px';
     });
-  }
+  });
 });
+
+
+// 리뷰 - 별점
+const stars = document.querySelectorAll('.star_rating .star');
+const starRating = document.querySelector('.star_rating');
+let savedRating = 0;
+
+stars.forEach((star, index) => {
+  // 마우스를 올렸을 때
+  star.addEventListener('mouseenter', () => {
+    const hoverRating = index + 1;
+    const displayRating = Math.max(hoverRating, savedRating);
+
+    applyColor(displayRating);
+  });
+
+  // 클릭했을 때
+  star.addEventListener('click', () => {
+    savedRating = index + 1;
+
+    applyColor(savedRating);
+  });
+});
+
+// 마우스가 영역을 벗어났을 때
+starRating.addEventListener('mouseleave', () => {
+  applyColor(savedRating);
+});
+
+// 색상 적용
+function applyColor(count) {
+  stars.forEach((star, index) => {
+    star.classList.toggle('active', index < count);
+  });
+}
+
