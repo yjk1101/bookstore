@@ -471,6 +471,7 @@ footer {
     font-size: 12px;
     color: var(--color-text-sub);
     font-weight: 600;
+    font-family: 'Pretendard';
 }
 
 .footer2 .owner_info i {

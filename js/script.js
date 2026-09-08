@@ -155,48 +155,6 @@ tabSeeMores.forEach(section => {
   });
 });
 
-// 텝 - 높이 auto
-const tabAutos = document.querySelectorAll('.tab_auto');
-
-tabAutos.forEach(section => {
-  const tabMenu = section.querySelectorAll('.tab_menu li');
-  const tabContent = section.querySelectorAll('.tabcontent');
-
-  if (tabContent.length > 0) {
-    // 초기 설정: 첫 번째 콘텐츠만 보이게 하고 나머지는 숨김
-    tabContent.forEach((tc, j) => {
-      tc.style.display = j === 0 ? 'block' : 'none';
-    });
-    
-    // 첫 번째 콘텐츠 높이 적용 (scrollHeight 사용)
-    const initialHeight = tabContent[0].scrollHeight;
-    section.style.height = (initialHeight + 60) + 'px';
-  }
-
-  tabMenu.forEach((tm, i) => {
-    tm.addEventListener('click', (e) => {
-      e.preventDefault(); // a 태그 등의 기본 동작 방지
-
-      // 메뉴 활성화 클래스 토글
-      tabMenu.forEach(item => item.classList.remove('active'));
-      tm.classList.add('active');
-
-      // 1. 콘텐츠 표시/숨김 처리를 먼저 실행 (그래야 높이 측정이 가능함)
-      tabContent.forEach((tc, j) => {
-        if (i === j) {
-          tc.style.display = 'block';
-        } else {
-          tc.style.display = 'none';
-        }
-      });
-
-      // 2. display: block으로 바뀐 후 높이 측정 및 적용
-      const contentHeight = tabContent[i].scrollHeight;
-      section.style.height = (contentHeight + 60) + 'px';
-    });
-  });
-});
-
 
 // 리뷰 - 별점
 const stars = document.querySelectorAll('.star_rating .star');

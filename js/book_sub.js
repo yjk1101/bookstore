@@ -126,20 +126,74 @@ async function bookData3() {
                     <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.2</span> (567)</p>
                 `;
             });
-
-            const parentTabSection = section.closest('.tab_section');
-            if (parentTabSection) {
-                const activeTabContent = parentTabSection.querySelector('.tabcontent[style*="block"], .tabcontent:not([style*="none"])');
-                if (activeTabContent) {
-                    const contentHeight = activeTabContent.scrollHeight;
-                    parentTabSection.style.height = (contentHeight + 60) + 'px';
-                }
-            }
         }
     } catch (error) {
         console.error('에러 발생:', error);
     }
 }
 
-bookData3();
+function waitForImagesLoaded(container) {
+    const images = container.querySelectorAll('img');
+    if (images.length === 0) return Promise.resolve();
 
+    const promises = Array.from(images).map(img => {
+        if (img.complete) return Promise.resolve();
+        return new Promise(resolve => {
+            img.onload = resolve;
+            img.onerror = resolve;
+        });
+    });
+    return Promise.all(promises);
+}
+
+async function initTabAuto() {
+    const tabAutos = document.querySelectorAll('.tab_auto');
+
+    for (const section of tabAutos) {
+        const tabMenu = section.querySelectorAll('.tab_menu li');
+        const tabContent = section.querySelectorAll('.tabcontent');
+
+        if (tabContent.length === 0) continue;
+
+        // 첫 번째 콘텐츠만 보이게 설정
+        tabContent.forEach((tc, j) => {
+            tc.style.display = j === 0 ? 'block' : 'none';
+        });
+
+        // 높이 계산 및 설정 함수 (이미지 로드 대기 포함)
+        async function setTabHeight(index) {
+            const activeContent = tabContent[index];
+            // 해당 탭 콘텐츠 내부의 이미지가 로드될 때까지 대기
+            await waitForImagesLoaded(activeContent);
+            const contentHeight = activeContent.scrollHeight;
+            section.style.height = (contentHeight + 60) + 'px';
+        }
+
+        // 초기 높이 설정 (데이터가 모두 그려진 뒤이므로 이미지 로드 후 계산)
+        await setTabHeight(0);
+
+        // 탭 클릭 이벤트
+        tabMenu.forEach((tm, i) => {
+            tm.addEventListener('click', async e => {
+                e.preventDefault();
+
+                tabMenu.forEach(item => item.classList.remove('active'));
+                tm.classList.add('active');
+
+                tabContent.forEach((tc, j) => {
+                    tc.style.display = i === j ? 'block' : 'none';
+                });
+
+                await setTabHeight(i);
+            });
+        });
+    }
+}
+
+async function init() {
+    await bookData3();
+
+    // 내부에서 이미지 로드 완료 후 높이 계산
+    await initTabAuto();
+}
+init();
