@@ -157,36 +157,44 @@ tabSeeMores.forEach(section => {
 
 
 // 리뷰 - 별점
-const stars = document.querySelectorAll('.star_rating .star');
 const starRating = document.querySelector('.star_rating');
-let savedRating = 0;
 
-stars.forEach((star, index) => {
-  // 마우스를 올렸을 때
-  star.addEventListener('mouseenter', () => {
-    const hoverRating = index + 1;
-    const displayRating = Math.max(hoverRating, savedRating);
+if (starRating) {
+  const stars = starRating.querySelectorAll('.star_rating .star');
 
-    applyColor(displayRating);
+  let savedRating = 0;
+
+  stars.forEach((star, index) => {
+    // 마우스를 올렸을 때
+    star.addEventListener('mouseenter', () => {
+      const hoverRating = index + 1;
+      const displayRating = Math.max(hoverRating, savedRating);
+
+      applyColor(displayRating);
+    });
+
+    // 클릭했을 때
+    star.addEventListener('click', () => {
+      savedRating = index + 1;
+
+      applyColor(savedRating);
+    });
   });
 
-  // 클릭했을 때
-  star.addEventListener('click', () => {
-    savedRating = index + 1;
-
+  // 마우스가 영역을 벗어났을 때
+  starRating.addEventListener('mouseleave', () => {
     applyColor(savedRating);
   });
-});
 
-// 마우스가 영역을 벗어났을 때
-starRating.addEventListener('mouseleave', () => {
-  applyColor(savedRating);
-});
-
-// 색상 적용
-function applyColor(count) {
-  stars.forEach((star, index) => {
-    star.classList.toggle('active', index < count);
-  });
+  // 색상 적용
+  function applyColor(count) {
+    stars.forEach((star, index) => {
+      star.classList.toggle('active', index < count);
+    });
+  }
 }
+
+
+
+
 

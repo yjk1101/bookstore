@@ -13,14 +13,16 @@
 
 .sub_right {
     width: 20%;
-    background: blue;
+    border-left:1px solid var(--color-gray-light)
 }
 
+
+/* sub_left */
 .content_box {
     padding: var(--padding-md) 0;
 }
 
-#sub_book {
+.sub_book1 {
     display: flex;
     width: 100%;
 }
@@ -127,6 +129,7 @@
     border-bottom: 1px solid var(--color-gray);
     padding: 8px 20px 8px 0;
     font-weight: 700;
+    font-size: var(--font-base-sub);
 }
 
 .sub_book_event dl dd ul li:last-of-type {
@@ -138,7 +141,7 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    color: var(--color-text-sub);
+    color: var(--color-text-light);
 }
 
 .sub_book_price {
@@ -154,9 +157,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 15px;
+    font-size: var(--font-base-sub);
     font-weight: 600;
-    background-color: var(--color-gray-light);
+    background-color: var(--color-gray-lighter);
 }
 
 .price_right {
@@ -169,6 +172,7 @@
     justify-content: space-between;
     padding: 5px 10px;
     font-size: var(--font-sm);
+    font-weight: 600;
 }
 
 .price_right dl dt {
@@ -197,7 +201,7 @@
     border: 1px solid var(--color-gray);
     padding: 16px 18px;
     border-radius: 4px;
-    font-size: 18px;
+    font-size: var(--font-lg-sub);
     font-weight: 500;
     color: var(--color-text-sub);
     cursor: pointer;
@@ -205,6 +209,11 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
+    transition: 0.2s;
+}
+
+.btnS1:hover {
+    border: 1px solid var(--color-text-light);
 }
 
 .btnS1.wide {
@@ -216,6 +225,11 @@
     border: 1px solid var(--color-primary);
     color: #fff;
     background: var(--color-primary);
+}
+
+.btnS1.blue:hover {
+    background: #0080f6;
+    border: 1px solid #0080f6;
 }
 
 .btnS2 {
@@ -250,9 +264,80 @@
     gap: 4px;
 }
 
-btnS3.gray {
+.btnS3.gray {
     background: var(--color-gray-darker);
     color: #fff;
+}
+
+/* sub_book2 */
+.sub_book2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px;
+    background: var(--color-gray-lighter);
+    border: 1px solid var(--color-gray);
+    border-radius: 5px;
+    font-size: var(--font-sm);
+    margin-top: var(--padding-md);
+}
+
+.sub_book2 > ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap-base);
+}
+
+.sub_book2 dl {
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+.sub_book2 dl dt {
+    font-weight: 600;
+}
+
+.sub_book2 dl > dd {
+    color: var(--color-text-sub);
+}
+
+.sub_book2 dl > dd > ul {
+    display: flex;
+}
+
+.sub_book2 dl > dd > ul > li::before {
+    content:'|';
+    display: inline-block;
+    margin: 0 6px;
+    color: var(--color-gray);
+}
+
+.sub_book2 dl > dd > ul > li:first-child:before {
+    display: none;
+}
+
+.sub_book2 dl > dd > ul > li.dis {
+    color: var(--color-gray-darker);
+    position: relative;
+}
+
+.diagonal-slash {
+  position: relative;
+  display: inline-block;
+}
+
+.sub_book2 dl > dd > ul > li.dis::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 11px;
+    width: 70%;
+    height: 1px;
+    background-color: var(--color-gray-darker);
+    transform: rotate(-45deg);
+}
+
+.sub_book2 dl > dd > ul > li.dis::before {
+    color: var(--color-gray);
 }
 
 /* 텝 */
@@ -280,7 +365,7 @@ btnS3.gray {
     background-color: var(--color-gray-light);
     text-align: center;
     border-right: none;
-    font-size: 18px;
+    font-size: var(--font-lg-sub);
     font-weight: 700;
 }
 
@@ -302,11 +387,12 @@ btnS3.gray {
     border-top: 1px solid #aaa;
     overflow: hidden;
     display: none;
-    padding: 20px 0 80px;
+    padding: 20px 0 0;
 }
 
 .tab_see_more .tabcontent {
     height: 300px;
+    padding: 20px 0 80px;
 }
 
 .tabcontent:first-of-type {
@@ -342,6 +428,7 @@ btnS3.gray {
     border: 1px solid var(--color-text-sub);
     border-radius: 4px;
     font-size: var(--font-base);
+    cursor: pointer;
 }
 
 #book_author_box .tabcontent {
@@ -353,7 +440,7 @@ btnS3.gray {
 
 /* content_box */
 .sub_book_name {
-    font-size: 18px;
+    font-size: var(--font-lg-sub);
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -363,7 +450,8 @@ btnS3.gray {
 }
 
 .txt_file {
-    font-size: 15px;
+    font-size: var(--font-base-sub);
+    line-height: 1.5;
 }
 
 .txt_file p:not(:last-of-type) {
@@ -394,18 +482,24 @@ btnS3.gray {
     margin-top: var(--padding-md);
 }
 
-#book_slide1 .swiper .swiper-slide {
+#book_slide1 .swiper .swiper-slide,
+#book_slide2 .swiper .swiper-slide,
+#book_slide3 .swiper .swiper-slide {
     display: block;
     justify-content: space-between;
 }
 
 #book_slide1 .swiper-button-next,
-#book_slide1 .swiper-button-prev {
+#book_slide1 .swiper-button-prev,
+#book_slide2 .swiper-button-next,
+#book_slide2 .swiper-button-prev,
+#book_slide3 .swiper-button-next,
+#book_slide3 .swiper-button-prev  {
     top: 100px;
 }
 
 #book_slide1 .main_title {
-    font-size: 18px;
+    font-size: var(--font-lg-sub);
 }
 
 
@@ -431,7 +525,7 @@ btnS3.gray {
 
 .stars_box p {
     margin-top: 10px;
-    font-size: 15px;
+    font-size:var(--font-base-sub);
     font-weight: 600;
 }
 
@@ -446,13 +540,13 @@ btnS3.gray {
 
 .stars_result_right p {
     color: var(--color-text-sub);
-    font-size: 15px;
+    font-size: var(--font-base-sub);
 }
 
 .stars_result_right button {
     font-family: 'Pretendard';
     color: var(--color-text-sub);
-    font-size: 15px;
+    font-size: var(--font-base-sub);
     background: none;
     border: none;
     outline: none;
@@ -470,7 +564,7 @@ btnS3.gray {
 
 .star_rating_box p {
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: var(--font-base-sub);
 }
 
 .star_rating {
@@ -502,9 +596,10 @@ btnS3.gray {
     height: 90px;
     border-radius: 5px;
     font-family: 'Pretendard';
-    font-size: var(--font-base);
+    font-size: var(--font-base-sub);
     outline: none;
     border: none;
+    line-height: 1.5;
 }
 
 .review_writing_btns {
@@ -523,33 +618,33 @@ btnS3.gray {
     align-items: center;
     cursor: pointer;
     user-select: none;
-    font-size: 15px;
+    font-size: var(--font-base-sub);
     color: #333;
     font-family: 'Pretendard';
 }
 
 .chkS1 label::before {
     content: '\f00c';
+    font-family: "Font Awesome 6 Free";
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border: 2px solid var(--color-gray-darker);
     border-radius: 50%;
-    margin-right: 8px;
+    margin-right: 6px;
     background-color: #fff;
-    color: #fff;
+    color: transparent;
+    font-size: 9px;
     transition: all 0.2s ease;
 }
 
 .chkS1 input[type="checkbox"]:checked+label::before {
-    content: '\f00c';
-    font-family: "Font Awesome 6 Free";
     font-weight: 900;
     background-color: var(--color-primary);
     border-color: var(--color-primary);
-    font-size: 11px;
+    color: #fff;
 }
 
 .review_sort {
@@ -595,7 +690,38 @@ btnS3.gray {
 }
 
 .review_body {
-    padding: 10px 0 20px;
+    padding: 20px 0;
+    font-size: var(--font-base-sub);
+}
+
+.review_body p {
+    height: 90px;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+.review_more_btn {
+    padding: 10px 0 0;
+    background-color: #fff;
+    width: 100%;
+}
+
+.review_more_btn button {
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    color: var(--color-text-light);
+    font-size: var(--font-base-sub);
+    font-family: 'Pretendard';
+    cursor: pointer;
+    
+}
+
+.review_more_btn button i {
+    font-size: 11px;
+    vertical-align: middle;
+    
 }
 
 .review_foot {
@@ -654,4 +780,48 @@ btnS3.gray {
     font-size: var(--font-sm);
     color: var(--color-text-sub);
     font-family: 'Pretendard';
+    cursor: pointer;
 }
+
+
+/* sub_right */
+#ranking {
+    padding: var(--padding-md) 0 var(--padding-md) 30px;
+}
+#ranking h3 {
+    font-size: var(--font-sm);
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+#ranking h3 i {
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.ranking_list {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--gap-base);
+}
+
+.ranking_list li {
+    font-size: var(--font-sm);
+    display: flex;
+    gap: var(--gap-base);
+}
+
+.ranking_list li > span {
+    color: var(--color-red);
+    font-weight: 700;
+}
+
+.ranking_list li > a {
+    font-size: inherit;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1;
+}
+

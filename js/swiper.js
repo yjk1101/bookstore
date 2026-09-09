@@ -59,13 +59,33 @@ if(document.getElementById('main_wrap')) {
 }
 
 if(document.getElementById('sub_wrap')) {
-    //sub_slide1
+    //book_slide1
     var bookslide1_swiper = new Swiper('.bs1mySwiper', {
         slidesPerView: 6,
         spaceBetween: 10,
         navigation: {
             nextEl: '#book_slide1 .swiper-button-next',
             prevEl: '#book_slide1 .swiper-button-prev',
+        },
+    });
+
+    //book_slide2
+    var bookslide2_swiper = new Swiper('.bs2mySwiper', {
+        slidesPerView: 6,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '#book_slide2 .swiper-button-next',
+            prevEl: '#book_slide2 .swiper-button-prev',
+        },
+    });
+
+    //book_slide3
+    var bookslide3_swiper = new Swiper('.bs3mySwiper', {
+        slidesPerView: 6,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '#book_slide3 .swiper-button-next',
+            prevEl: '#book_slide3 .swiper-button-prev',
         },
     });
 }

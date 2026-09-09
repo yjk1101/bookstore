@@ -1,25 +1,31 @@
-async function bookData2() {
+async function fetchBooks(query, target = "title", size = 10) {
     const REST_API_KEY = '7da520800b5f57deee3be3704a6408a8';
-    const params = new URLSearchParams({
-        target: "title",
-        query: "그랬다고 적었다"
-    });
 
+    const params = new URLSearchParams({
+        target,
+        query,
+        size
+    });
+    
     const url = `https://dapi.kakao.com/v3/search/book?${params}`;
 
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                Authorization: `KakaoAK ${REST_API_KEY}`
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            Authorization: `KakaoAK ${REST_API_KEY}`
         }
+    });
 
-        const data = await response.json();
+    if (!response.ok) {
+        throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
+    }
+
+    return response.json();
+}
+
+async function bookData2() {
+    try {
+        const data = await fetchBooks("그랬다고 적었다", "title");
 
         // 요소 선택
         const subBookTitle = document.querySelector(".sub_book_tit");
@@ -73,78 +79,116 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadTextFile("./sub_txt/txt3.txt", "book_author_intro");
 });
 
-async function fetchBooks(query) {
-    const REST_API_KEY = '7da520800b5f57deee3be3704a6408a8';
-    const params = new URLSearchParams({
-        target: "authors",
-        query,
-        size: 15
-    });
-    const url = `https://dapi.kakao.com/v3/search/book?${params}`;
-
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            Authorization: `KakaoAK ${REST_API_KEY}`
-        }
-    });
-
-    if (!response.ok) {
-        throw new Error(`HTTP 오류: ${response.status}`);
-    }
-
-    return response.json();
-}
-
 async function bookData3() {
     try {
-        // query와 section ID를 매핑
         const queries = [
-            { query: "김애란", sectionId: "book_slide1" }
+            { query: "김애란", sectionId: "book_slide1", target: "authors" },
+            { query: "이", sectionId: "book_slide2", target: "authors" },
+            { query: "에세이", sectionId: "book_slide3", target: "title" },
+            { query: "에세이", sectionId: "ranking", target: "title" },
         ];
 
-        for (const { query, sectionId } of queries) {
-            const data = await fetchBooks(query);
+        for (const { query, sectionId, target } of queries) {
+            const data = await fetchBooks(query, target, 15);
             const section = document.querySelector(`#${sectionId}`);
-            const boxElements = section.querySelectorAll(".swiper-slide");
+            if (!section) continue;
 
-            //썸네일이 빈 문자열인것은 제외
             const origin = data.documents;
-            let originFilter = origin.filter((val)=>{
-                return val.thumbnail != '' && val.contents !='' && val.title !='' && val.authors !='';
-            })
-            
-            boxElements.forEach((box, i) => {
-                const doc = originFilter[i];
-                if (!doc) return;
-
-                // 요소 생성 및 추가
-                box.innerHTML = `
-                    <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
-                    <a href="" class="book_tit"><p>${doc.title}</p></a>
-                    <p class="book_author">${doc.authors}</p>
-                    <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.2</span> (567)</p>
-                `;
+            let originFilter = origin.filter((val) => {
+                return val.thumbnail != '' && val.contents != '' && val.title != '' && val.authors != '';
             });
+
+            if (sectionId === "ranking") {
+                const rankingList = section.querySelector(".ranking_list");
+                if (!rankingList) continue;
+
+                rankingList.innerHTML = '';
+                for (let j = 0; j < 10; j++) {
+                    const doc = originFilter[j];
+                    const li = document.createElement('li');
+
+                    li.innerHTML = `
+                        <span>${j + 1}</span>
+                        <a href="">${doc.title}</a>
+                    `;
+
+                    rankingList.appendChild(li);
+                }
+            } else {
+                const boxElements = section.querySelectorAll(".swiper-slide");
+                boxElements.forEach((box, i) => {
+                    const doc = originFilter[i];
+                    if (!doc) return;
+
+                    // 요소 생성 및 추가
+                    box.innerHTML = `
+                        <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                        <a href="" class="book_tit"><p>${doc.title}</p></a>
+                        <p class="book_author">${doc.authors}</p>
+                        <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.2</span> (567)</p>
+                    `;
+                });
+            }
         }
     } catch (error) {
         console.error('에러 발생:', error);
     }
 }
 
+// 리뷰 더보기 처리
+function initReviewMore(container) {
+    const reviewMoreBtns = container.querySelectorAll('.review_more_btn');
+
+    reviewMoreBtns.forEach(btn => {
+        const reviewBody = btn.closest('.review_body');
+        const reviewText = reviewBody.querySelector('p');
+
+        if (!reviewText) return;
+
+        // 실제 내용 높이 확인
+        if (reviewText.scrollHeight <= 90) {
+            reviewText.style.height = 'auto';
+            btn.style.display = 'none';
+        } else {
+            // 90px보다 크면 다시 90px로 설정
+            reviewText.style.height = '90px';
+            btn.style.display = 'block';
+        }
+
+        // 기존 이벤트가 중복 등록되지 않도록 한 번만 등록
+        if (btn.dataset.initialized) return;
+
+        btn.dataset.initialized = 'true';
+
+        btn.addEventListener('click', () => {
+            reviewText.style.height = 'auto';
+            btn.style.display = 'none';
+        });
+    });
+}
+
+
 function waitForImagesLoaded(container) {
     const images = container.querySelectorAll('img');
-    if (images.length === 0) return Promise.resolve();
+
+    if (images.length === 0) {
+        return Promise.resolve();
+    }
 
     const promises = Array.from(images).map(img => {
-        if (img.complete) return Promise.resolve();
+        if (img.complete) {
+            return Promise.resolve();
+        }
+
         return new Promise(resolve => {
             img.onload = resolve;
             img.onerror = resolve;
         });
     });
+
     return Promise.all(promises);
 }
+
 
 async function initTabAuto() {
     const tabAutos = document.querySelectorAll('.tab_auto');
@@ -155,40 +199,63 @@ async function initTabAuto() {
 
         if (tabContent.length === 0) continue;
 
-        // 첫 번째 콘텐츠만 보이게 설정
+        // 첫 번째 콘텐츠만 표시
         tabContent.forEach((tc, j) => {
             tc.style.display = j === 0 ? 'block' : 'none';
         });
 
-        // 높이 계산 및 설정 함수 (이미지 로드 대기 포함)
+        // 탭 높이 계산
         async function setTabHeight(index) {
             const activeContent = tabContent[index];
-            // 해당 탭 콘텐츠 내부의 이미지가 로드될 때까지 대기
+
+            if (!activeContent) return;
+
+            // 탭을 보여준 상태에서 리뷰 높이 계산
+            initReviewMore(activeContent);
+
+            // 이미지 로드 대기
             await waitForImagesLoaded(activeContent);
+
+            // 이미지 로드 후 리뷰 높이 다시 계산
+            initReviewMore(activeContent);
+
             const contentHeight = activeContent.scrollHeight;
+
             section.style.height = (contentHeight + 60) + 'px';
         }
 
-        // 초기 높이 설정 (데이터가 모두 그려진 뒤이므로 이미지 로드 후 계산)
+        // 초기 높이
         await setTabHeight(0);
 
-        // 탭 클릭 이벤트
+        // 탭 클릭
         tabMenu.forEach((tm, i) => {
             tm.addEventListener('click', async e => {
                 e.preventDefault();
 
-                tabMenu.forEach(item => item.classList.remove('active'));
-                tm.classList.add('active');
-
-                tabContent.forEach((tc, j) => {
-                    tc.style.display = i === j ? 'block' : 'none';
+                // active
+                tabMenu.forEach(item => {
+                    item.classList.remove('active');
                 });
 
+                tm.classList.add('active');
+
+
+                // 모든 탭 숨기기
+                tabContent.forEach(tc => {
+                    tc.style.display = 'none';
+                });
+
+                // 클릭한 탭 표시
+                tabContent[i].style.display = 'block';
+
+
+                // 탭을 클릭할 때마다 리뷰 높이 + 탭 높이 재계산
                 await setTabHeight(i);
             });
         });
     }
 }
+
 
 async function init() {
     await bookData3();
