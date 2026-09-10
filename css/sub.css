@@ -457,7 +457,7 @@
 }
 
 .txt_file p {
-    font-size: var(--font-base-sub);
+    font-size: var(--font-base-sub) !important;
 }
 
 .txt_file p:not(:last-of-type) {
@@ -709,7 +709,7 @@
     height: 90px;
     overflow: hidden;
     line-height: 1.5;
-    font-size: var(--font-base-sub);
+    font-size: var(--font-base-sub) !important;
 }
 
 .review_more_btn {

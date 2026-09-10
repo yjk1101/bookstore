@@ -340,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (modalBtn1) {
         modalBtn1.addEventListener('click', function() {
             modal1.classList.add('active');
+            document.body.style.overflow = 'hidden'; // 모달 열릴 때 body 스크롤 숨김
 
             // 열릴 때 1페이지로 스크롤 및 상태 초기화
             if (modalBody) {
@@ -357,6 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (goBackBtn) {
         goBackBtn.addEventListener('click', function() {
             modal1.classList.remove('active');
+            document.body.style.overflow = ''; // 모달 닫힐 때 body 스크롤 복구
         });
     }
 });
