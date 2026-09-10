@@ -80,6 +80,7 @@ body {
     border: 1px solid var(--color-text-sub);
     border-radius: 50%;
     background: #fff;
+    transition: 0.2s;
 }
 
 .swiper-button-prev {
@@ -113,6 +114,7 @@ body {
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
     color: var(--color-text-main);
+    transition: 0.2s;
 }
 
 .swiper-button-prev.swiper-button-disabled,

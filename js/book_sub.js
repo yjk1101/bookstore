@@ -109,7 +109,7 @@ async function bookData3() {
 
                     li.innerHTML = `
                         <span>${j + 1}</span>
-                        <a href="">${doc.title}</a>
+                        <a href="index.html">${doc.title}</a>
                     `;
 
                     rankingList.appendChild(li);
@@ -122,8 +122,8 @@ async function bookData3() {
 
                     // 요소 생성 및 추가
                     box.innerHTML = `
-                        <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
-                        <a href="" class="book_tit"><p>${doc.title}</p></a>
+                        <a href="index.html" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                        <a href="index.html" class="book_tit"><p>${doc.title}</p></a>
                         <p class="book_author">${doc.authors}</p>
                         <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.2</span> (567)</p>
                     `;
@@ -189,7 +189,7 @@ function waitForImagesLoaded(container) {
     return Promise.all(promises);
 }
 
-
+// 텝 높이 처리
 async function initTabAuto() {
     const tabAutos = document.querySelectorAll('.tab_auto');
 
@@ -255,7 +255,6 @@ async function initTabAuto() {
         });
     }
 }
-
 
 async function init() {
     await bookData3();

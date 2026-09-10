@@ -23,7 +23,7 @@
 			<div class="container">
 				<div class="header1">
 					<h1 class="logo">
-						<a href="" target="_blank">
+						<a href="index.html" target="_blank">
 							<img src="./img/logo.png" alt="리디북스">
 						</a>
 					</h1>
@@ -35,8 +35,8 @@
 					</form>
 					<div class="mymenu">
 						<ul>
-							<li><a href="">로그인</a></li>
-							<li><a href="">회원가입</a></li>
+							<li><a href="index.html">로그인</a></li>
+							<li><a href="index.html">회원가입</a></li>
 						</ul>
 					</div>
 				</div>
@@ -44,13 +44,13 @@
 				<div class="header2">
 					<nav>
 						<ul>
-							<li><a href="">만화</a></li>
-							<li><a href="">웹툰</a></li>
-							<li><a href="">웹소설</a></li>
-							<li class="active"><a href="">도서</a></li>
-							<li class="new"><a href="">리디샵</a></li>
+							<li><a href="index.html">만화</a></li>
+							<li><a href="index.html">웹툰</a></li>
+							<li><a href="index.html">웹소설</a></li>
+							<li><a href="index.html">도서</a></li>
+							<li class="new"><a href="index.html">리디샵</a></li>
 							<li>
-								<a href="">
+								<a href="index.html">
 									셀렉트<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
 										viewBox="0 0 18 18">
 										<path fill="currentColor"
@@ -62,11 +62,11 @@
 						</ul>
 					</nav>
 					<div class="wholemenu_box">
-						<a href="">
+						<a href="index.html">
 							<i class="fa-solid fa-bars"></i>
 							전체 카테고리
 						</a>
-						<a href="">
+						<a href="index.html">
 							<i class="fa-solid fa-arrows-rotate"></i>
 							캐시충전
 						</a>
@@ -83,16 +83,16 @@
 							<div class="sub_book1">
 								<div class="sub_book_left">
 									<div class="sub_book_img"></div>
-									<button type="button" class="btnS1 wide">미리보기</button>
+									<button type="button" class="btnS1 wide" id="modal_btn1">미리보기</button>
 								</div>
 								<div class="sub_book_right">
 									<div class="sub_book_detail">
 										<div class="sub_book_navi">
 											<ul class="sub_txt_list">
 												<li>
-													<a href="">에세이/시</a>
+													<a href="index.html">에세이/시</a>
 													<i class="fa-solid fa-chevron-right"></i>
-													<a href="">에세이</a>
+													<a href="index.html">에세이</a>
 												</li>
 											</ul>
 										</div>
@@ -142,8 +142,7 @@
 									</div>
 									<div class="btns justify_end">
 										<button type="button" class="btnS1"><i class="fa-regular fa-heart"></i></button>
-										<button type="button" class="btnS1"><i
-												class="fa-solid fa-cart-shopping"></i></button>
+										<button type="button" class="btnS1"><i class="fa-solid fa-cart-shopping"></i></button>
 										<button type="button" class="btnS1"><i class="fa-solid fa-gift"></i></button>
 										<button type="button" class="btnS1 wide blue">소장</button>
 									</div>
@@ -278,7 +277,7 @@
 									</div>
 									<div id="book_slide1" class="book_slide">
 										<h2 class="main_title">작가의 대표 작품</h2>
-										<a href="" class="more_btn">더보기</a>
+										<a href="index.html" class="more_btn">더보기</a>
 										<div class="sec_con">
 											<div class="swiper bs1mySwiper">
 												<div class="swiper-wrapper">
@@ -635,7 +634,7 @@
 						<div id="book_slide3" class="content_box ">
 							<div class="book_slide">
 								<h2 class="main_title">에세이 베스트</h2>
-								<a href="" class="more_btn">더보기</a>
+								<a href="index.html" class="more_btn">더보기</a>
 								<div class="sec_con">
 									<div class="swiper bs3mySwiper">
 										<div class="swiper-wrapper">
@@ -667,14 +666,83 @@
 			</div>
 		</div>
 
+		<div class="modal" id="modal1">
+			<div class="modal_con">
+				<div class="modal_con_left">
+					<div class="modal_head">
+						<button type="button" class="goback"><i class="fa-solid fa-chevron-left"></i><span>그랬다고 적었다</span></button>
+						<div class="font-btns">
+							<button id="fontDecreaseBtn" class="font-btn des_btn"><span>가</span><i class="fa-solid fa-minus"></i></button>
+							<button id="fontIncreaseBtn" class="font-btn"><span>가</span><i class="fa-solid fa-plus"></i></button>
+						</div>
+					</div>
+					<div class="modal_body">
+						<div class="page-section" data-id="1">
+							<div class="book-content">
+								<p class="story-text">그날 밤, 유난히 달빛이 밝았다. 주인공은 오랫동안 잊고 지냈던 낡은 상자를 열어보며 깊은 상념에 잠겼다. 상자 속에는 먼지가 쌓인
+									손편지와 함께 은빛 열쇠 하나가 조용히 담겨 있었다. 이것은 분명 과거로부터의 초대장이었다.</p>
+								<p class="story-text">방 안에는 묘한 긴장감이 감돌았다. 시계추가 째깍거리는 소리만이 유난히 크게 울려 퍼졌고, 그는 홀린 듯 손을 뻗어 상자 바닥에 깔린
+									오래된 사진 한 장을 집어 들었다. 그 사진 속에는 상상도 하지 못한 진실이 담겨 있었다.</p>
+							</div>
+						</div>
+						<div class="page-section" data-id="2">
+							<div class="book-content">
+								<p class="story-text">열쇠를 손에 쥐자 서늘한 감촉이 손끝을 타고 전해졌다. 어릴 적 마당에 숨겨두었던 비밀 상자의 기억이 스물스물 피어올랐다. 그는 홀린
+									듯이 자리에서 일어나 방구석에 있는 낡은 나무 문을 향해 걸어갔다. 손이 떨리기 시작했다.</p>
+								<p class="story-text">자물쇠에 열쇠를 넣자마자 '딸깍' 하는 청량한 소리가 공간을 채웠다. 수십 년 동안 잠겨 있던 문이 서서히 열리며 묵은 먼지가 바람에
+									날려 흩어졌다. 그 속에서 흘러나오는 서늘한 공기는 마치 다른 세상으로 통하는 길목 같았다.</p>
+							</div>
+						</div>
+						<div class="page-section" data-id="3">
+							<div class="book-content">
+								<p class="story-text">끼익— 하고 소름 끼치는 소리와 함께 문이 완전히 열렸다. 오랜 세월 동안 빛을 보지 못한 방 안에서는 묘한 향기가 흘러나왔다.
+									달빛이 창문을 통해 방안 구석구석을 비추는 순간, 놀랍게도 벽면에 숨겨진 또 다른 공간이 모습을 드러냈다.</p>
+								<p class="story-text">그곳은 누군가 은밀하게 기록해 둔 수많은 연구 일지와 지도들로 가득했다. 그는 손에 든 촛불을 높이 들고 조심스럽게 방 안으로 발을
+									들였다. 바닥에 밟히는 종이 소리마저 유독 크게 들려오는 적막한 공간이었다.</p>
+							</div>
+						</div>
+						<div class="page-section" data-id="4">
+							<div class="book-content">
+								<p class="story-text">그곳에는 그토록 찾아 헤매던 진실이 기다리고 있었다. 모든 수수께끼의 조각이 하나로 맞춰지는 순간이었다. 그는 숨을 죽인 채 천천히
+									발걸음을 내디뎠다. 진짜 모험은 이제부터 시작이었다.</p>
+								<p class="story-text">창밖으로 서서히 동이 트기 시작했다. 밤새도록 이어졌던 기나긴 여정의 끝에서, 그는 비로소 자신이 나아갈 길을 확신할 수 있었다.
+									거침없는 바람을 맞으며, 새로운 세상 속으로 발을 내딛었다.</p>
+							</div>
+						</div>
+						<button type="button" class="page_prev"><i class="fa-solid fa-chevron-left"></i><span></span></button>
+						<button type="button" class="page_next"><i class="fa-solid fa-chevron-right"></i><span></span></button>
+					</div>
+					<div class="modal_foot">
+						<div class="page_controller">
+							<span><span id="pageCount">1</span>/<span id="totalPage">4</span></span>
+							<div class="range_wrapper">
+								<input type="range" id="rangeSlider" min="1" max="4" value="1" disabled>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal_con_right">
+					<nav>
+						<div class="modal_nav_tit">목차</div>
+						<ul>
+							<li><button type="button" data-id="1">페이지1</button></li>
+							<li><button type="button" data-id="2">페이지2</button></li>
+							<li><button type="button" data-id="3">페이지3</button></li>
+							<li><button type="button" data-id="4">페이지4</button></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+
 		<footer>
 			<div class="container">
 				<div class="footer1">
 					<div class="footer_menu_box">
 						<div class="customer_menu">
 							<ul>
-								<li><a href=""><i class="fa-solid fa-headset"></i>고객센터</a></li>
-								<li><a href=""><i class="fa-solid fa-volume-low"></i>공지사항</a></li>
+								<li><a href="index.html"><i class="fa-solid fa-headset"></i>고객센터</a></li>
+								<li><a href="index.html"><i class="fa-solid fa-volume-low"></i>공지사항</a></li>
 							</ul>
 						</div>
 						<div class="footer1_menu">
@@ -682,17 +750,17 @@
 								<li>
 									<p>서비스</p>
 									<ul>
-										<li><a href="">제휴카드</a></li>
-										<li><a href="">뷰어 다운로드</a></li>
-										<li><a href="">CP사이트</a></li>
-										<li><a href="">리디바탕</a></li>
+										<li><a href="index.html">제휴카드</a></li>
+										<li><a href="index.html">뷰어 다운로드</a></li>
+										<li><a href="index.html">CP사이트</a></li>
+										<li><a href="index.html">리디바탕</a></li>
 									</ul>
 								</li>
 								<li>
 									<p>기타 문의</p>
 									<ul>
-										<li><a href="">원고 투고</a></li>
-										<li><a href="">사업 제휴 문의</a></li>
+										<li><a href="index.html">원고 투고</a></li>
+										<li><a href="index.html">사업 제휴 문의</a></li>
 									</ul>
 								</li>
 								<li>
@@ -700,8 +768,8 @@
 
 									</p>
 									<ul>
-										<li><a href="">회사 소개</a></li>
-										<li class="new"><a href="">인재채용</a></li>
+										<li><a href="index.html">회사 소개</a></li>
+										<li class="new"><a href="index.html">인재채용</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -710,10 +778,10 @@
 
 					<div class="sns_menu">
 						<ul>
-							<li><a href=""><i class="fa-brands fa-facebook-f"></i></a></li>
-							<li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+							<li><a href="index.html"><i class="fa-brands fa-facebook-f"></i></a></li>
+							<li><a href="index.html"><i class="fa-brands fa-instagram"></i></a></li>
 							<li>
-								<a href="">
+								<a href="index.html">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
 										viewBox="0 0 24 24">
 										<path fill="#787878"
@@ -722,9 +790,9 @@
 									</svg>
 								</a>
 							</li>
-							<li><a href=""><i class="fa-solid fa-play"></i></a></li>
+							<li><a href="index.html"><i class="fa-solid fa-play"></i></a></li>
 							<li>
-								<a href="">
+								<a href="index.html">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
 										viewBox="0 0 24 24">
 										<path fill="#787878"

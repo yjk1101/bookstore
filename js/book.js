@@ -57,10 +57,10 @@ async function bookData() {
                         book.classList.add("slide_content2");
 
                         book.innerHTML = `
-                            <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                            <a href="sub.html" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
                             <span class="num">${bookIndex + 1}</span>
                             <div class="book_info">
-                                <a href="" class="book_tit"><p>${doc.title}</p></a>
+                                <a href="sub.html" class="book_tit"><p>${doc.title}</p></a>
                                 <p class="book_author">${doc.authors}</p>
                                 <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.3</span> (1234)</p>
                             </div>
@@ -80,8 +80,8 @@ async function bookData() {
 
                     // 요소 생성 및 추가
                     box.innerHTML = `
-                        <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
-                        <a href="" class="book_tit"><p>${doc.contents.substring(0, 60)}</p></a>
+                        <a href="sub.html" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                        <a href="sub.html" class="book_tit"><p>${doc.contents.substring(0, 60)}</p></a>
                     `;
                 });
             }
@@ -105,10 +105,10 @@ async function bookData() {
                         book.innerHTML = `
                             <div class="book_img_box">
                                 <div class="book_img_bg" style="background-color: ${bgColor};"></div>
-                                <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                                <a href="sub.html" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
                             </div>
-                            <a href="" class="book_tit"><p>${doc.contents.substring(0, 60)}</p></a>
-                            <a href="" class="book_author"><p>${doc.title}</p></a>
+                            <a href="sub.html" class="book_tit"><p>${doc.contents.substring(0, 60)}</p></a>
+                            <a href="sub.html" class="book_author"><p>${doc.title}</p></a>
                         `;
 
                         box.appendChild(book);
@@ -123,8 +123,8 @@ async function bookData() {
 
                     // 요소 생성 및 추가
                     box.innerHTML = `
-                        <a href="" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
-                        <a href="" class="book_tit"><p>${doc.title}</p></a>
+                        <a href="sub.html" class="book_img"><img src="${doc.thumbnail}" alt="${doc.title}"></a>
+                        <a href="sub.html" class="book_tit"><p>${doc.title}</p></a>
                         <p class="book_author">${doc.authors}</p>
                         <p class="book_score"><span class="book_star"><i class="fa-solid fa-star"></i> 4.2</span> (567)</p>
                     `;
