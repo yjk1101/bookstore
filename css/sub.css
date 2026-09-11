@@ -456,6 +456,10 @@
     line-height: 1.5;
 }
 
+.txt_file p {
+    font-size: var(--font-base-sub) !important;
+}
+
 .txt_file p:not(:last-of-type) {
     margin-bottom: 30px;
 }
@@ -463,7 +467,12 @@
 .listS1 li {
     display: flex;
     gap: var(--gap-base);
-    line-height: 1.7;
+    line-height: 1.5;
+    font-size: var(--font-base-sub);
+}
+
+.listS1 li div {
+    font-size: var(--font-base-sub);
 }
 
 .listS1 li div:first-of-type {
@@ -700,6 +709,7 @@
     height: 90px;
     overflow: hidden;
     line-height: 1.5;
+    font-size: var(--font-base-sub) !important;
 }
 
 .review_more_btn {
@@ -1022,9 +1032,10 @@
 }
 
 .modal_foot {
-    padding: 10px 30px 20px;
+    padding: 10px 30px;
     display: flex;
     justify-content: center;
+    border-top:1px solid var(--color-gray)
 }
 
 .page_controller {
@@ -1070,54 +1081,20 @@
     transition: 0.2s;
 }
 
-/* .range_wrapper {
-    position: absolute;
-    z-index: 3;
-    bottom: 26px;
-    left: 0;
-    width: 100%;
-    padding: 0 62px
-}
-
-.range_wrapper.range_wrapper_hidden {
-    visibility: hidden
-}
-
-.range_wrapper .page_num {
-    padding-bottom: 7px;
-    color: #8595a2;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1em;
-    transition: color .45s;
-    cursor: default
-}
-
-.range_wrapper:hover .page_num {
-    color: #1f8ee6
-} */
-
-/* .range_wrapper {
-    padding: 0 62px;
+/* 스크롤바 */
+.range_wrapper {
+    padding: 6px 62px;
+    overflow: hidden;
     position: relative;
     height: 2px;
-    background: linear-gradient(to right,var(--seek-indicator-color, #a1afbb) 0%,var(--seek-indicator-color, #a1afbb) var(--seek-progress, 0%),#fafafa var(--seek-progress, 0%),#fafafa 100%)
-}
-
-.range_wrapper#rangeSlider_track_rtl {
-    background: linear-gradient(to left,var(--seek-indicator-color, #a1afbb) 0%,var(--seek-indicator-color, #a1afbb) var(--seek-progress, 0%),#fafafa var(--seek-progress, 0%),#fafafa 100%)
-}
-
-.range_wrapper:hover #rangeSlider_track {
-    --seek-indicator-color: #1f8ee6
 }
 
 .range_wrapper #rangeSlider {
     display: block;
     position: absolute;
-    top: 0;
-    left: -8px;
-    width: calc(100% + 18px);
+    top: 5px;
+    left: -4px;
+    width: calc(100% + 9px);
     height: 2px;
     border: none;
     border-radius: 0;
@@ -1142,10 +1119,6 @@
     transition: background .45s
 }
 
-.range_wrapper:hover #rangeSlider::-webkit-slider-thumb {
-    background: #1f8ee6
-}
-
 .range_wrapper #rangeSlider::-moz-range-thumb {
     box-sizing: content-box;
     width: 8px;
@@ -1155,7 +1128,3 @@
     background: #a1afbb;
     background-clip: content-box
 }
-
-.range_wrapper:hover #rangeSlider::-moz-range-thumb {
-    background: #1f8ee6
-} */

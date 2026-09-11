@@ -163,6 +163,16 @@ function initReviewMore(container) {
         btn.addEventListener('click', () => {
             reviewText.style.height = 'auto';
             btn.style.display = 'none';
+
+            // [수정] 더보기 클릭 시 리뷰 내용이 펼쳐지면서 늘어난 높이만큼 탭 컨테이너(section) 높이 재계산
+            const section = btn.closest('.tab_auto');
+            if (section) {
+                const activeContent = section.querySelector('.tabcontent:not([style*="display: none"])');
+                if (activeContent) {
+                    const contentHeight = activeContent.scrollHeight;
+                    section.style.height = (contentHeight + 60) + 'px';
+                }
+            }
         });
     });
 }
