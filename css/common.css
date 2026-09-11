@@ -124,6 +124,13 @@ body {
 
 
 /* 공통 */
+html {
+  -webkit-text-size-adjust: 100%; /* 사파리/크롬 (iOS, 안드로이드) */
+  -moz-text-size-adjust: 100%;    /* 파이어폭스 */
+  -ms-text-size-adjust: 100%;     /* 구형 IE/엣지 */
+  text-size-adjust: 100%;         /* 표준 */
+}
+
 body {
     font-family: 'Pretendard';
     font-size: var(--font-base);
